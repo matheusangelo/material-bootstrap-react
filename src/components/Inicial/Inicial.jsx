@@ -8,12 +8,7 @@ class PaginaInicial extends Component {
         this.state = {
             titulo: "react",
             valor: 0,
-            data: [
-                { id: 403, title: 'Task 403', priority: 'High', type: 'Improvement', complete: 100 },
-                { id: 532, title: 'Task 532', priority: 'Medium', type: 'Improvement', complete: 30 },
-                { id: 240, title: 'Task 240', priority: 'High', type: 'Story', complete: 66 },
-            ],
-            teste: ""
+            data: []
         }
     }
 
@@ -93,7 +88,7 @@ class PaginaInicial extends Component {
                     </Row>
                     <Row className="text-right mt-3">
                         <Col>
-                            <Button color="primary" onClick={() => this.mostrar()}>Processar</Button>
+                            <Button color="primary" className="mb-3" onClick={() => this.mostrar()}>Processar</Button>
                         </Col>
                     </Row>
                     <Card>

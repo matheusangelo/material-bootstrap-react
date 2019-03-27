@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import { Switch, Route } from 'react-router-dom';
 import PaginaInicial from './components/Inicial/Inicial';
-import NavBarTopo  from './components/navbar/topo';
+import NavBarTopo from './components/navbar/topo';
 
 class App extends Component {
   render() {
@@ -10,7 +11,11 @@ class App extends Component {
         <header>
           <NavBarTopo></NavBarTopo>
         </header>
-        <PaginaInicial/>
+        <div className="main-container" style={{ "align": "center" }}>
+           <Switch>
+            <Route path="/" exact component={PaginaInicial} />
+          </Switch>
+        </div>
       </div>
     );
   }
