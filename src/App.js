@@ -12,7 +12,7 @@ class App extends Component {
           <NavBarTopo></NavBarTopo>
         </header>
         <div className="main-container" style={{ "align": "center" }}>
-           <Switch>
+          <Switch>
             <Route path="/" exact component={PaginaInicial} />
           </Switch>
         </div>

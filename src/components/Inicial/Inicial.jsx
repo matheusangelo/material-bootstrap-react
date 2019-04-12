@@ -2,13 +2,49 @@ import React, { Component } from 'react';
 import { Container, Col, Row, Button, Card, CardBody, CardHeader, Table } from 'reactstrap';
 
 
+let mock_resultados = [
+    {
+        "id": "1",
+        "codigo": 1,
+        "descricao": "Câncer",
+        "probabilidade": 90,
+    },
+    {
+        "id": "2",
+        "codigo": 2,
+        "descricao": "Câncer",
+        "probabilidade": 90,
+    },
+    {
+        "id": "3",
+        "codigo": 3,
+        "descricao": "Câncer",
+        "probabilidade": 90,
+    },
+    {
+        "id": "4",
+        "codigo": 4,
+        "descricao": "Câncer",
+        "probabilidade": 90,
+    },
+    {
+        "id": "5",
+        "codigo": 5,
+        "descricao": "Câncer",
+        "probabilidade": 90,
+    },
+]
+
+
 class PaginaInicial extends Component {
     constructor(props) {
         super(props);
         this.state = {
             titulo: "react",
             valor: 0,
-            data: []
+            data: [],
+            resultados: mock_resultados,
+            retorno: [],
         }
     }
 
@@ -20,6 +56,30 @@ class PaginaInicial extends Component {
         let vetor = this.state.data;
         vetor = [];
         alert(vetor.length);
+    }
+
+    componentDidMount() {
+        try {
+            let URL_BASE = "http://127.0.0.1:5000";
+            fetch(URL_BASE + '/v1/tensorflow', { method: 'GET', mode: 'cors'}).then((resultado) => {resultado.json().then((dados) => {
+                    let retornos = [];
+                    if (dados.success === true) {
+                        for (let i = 0; i < dados.data.length; i++) {
+                            retornos.push({
+                                status:dados.data[i].status
+                            })
+                        }
+                        console.log(retornos)
+                        this.setState({
+                            retorno: retornos
+                        });
+                    }
+                })
+            })
+        }
+        catch (e) {
+            console.log(e)
+        }
     }
 
 
@@ -110,35 +170,16 @@ class PaginaInicial extends Component {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        1
-                                        </td>
-                                                    <td>
-                                                        1
-                                        </td>
-                                                    <td>
-                                                        Câncer
-                                        </td>
-                                                    <td>
-                                                        90 %
-                                        </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>
-                                                        1
-                                        </td>
-                                                    <td>
-                                                        1
-                                        </td>
-                                                    <td>
-                                                        Câncer
-                                        </td>
-                                                    <td>
-                                                        90 %
-                                        </td>
-                                                </tr>
+                                                {this.state.resultados.map((resultado, i) => {
+                                                    return (
+                                                        <tr>
+                                                            <td>{resultado.id}</td>
+                                                            <td>{resultado.codigo}</td>
+                                                            <td>{resultado.descricao}</td>
+                                                            <td>{resultado.probabilidade}%</td>
+                                                        </tr>
+                                                    )
+                                                })}
                                             </tbody>
                                         </Table>
                                     </Row>
@@ -158,35 +199,16 @@ class PaginaInicial extends Component {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        1
-                                        </td>
-                                                    <td>
-                                                        1
-                                        </td>
-                                                    <td>
-                                                        Câncer
-                                        </td>
-                                                    <td>
-                                                        90 %
-                                        </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>
-                                                        1
-                                        </td>
-                                                    <td>
-                                                        1
-                                        </td>
-                                                    <td>
-                                                        Câncer
-                                        </td>
-                                                    <td>
-                                                        90 %
-                                        </td>
-                                                </tr>
+                                                {this.state.resultados.map((resultado, i) => {
+                                                    return (
+                                                        <tr>
+                                                            <td>{resultado.id}</td>
+                                                            <td>{resultado.codigo}</td>
+                                                            <td>{resultado.descricao}</td>
+                                                            <td>{resultado.probabilidade}%</td>
+                                                        </tr>
+                                                    )
+                                                })}
                                             </tbody>
                                         </Table>
                                     </Row>
