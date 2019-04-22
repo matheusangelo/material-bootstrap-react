@@ -27,3 +27,18 @@
     transform: rotate(360deg);
   }
 }
+
+.footer {
+  height: 30px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  font-size: small;
+  font-weight: bold;
+  padding-top: -5px;
+  padding-left: 10px;
+  vertical-align: middle;
+  color: white;
+  background-color: black;
+}

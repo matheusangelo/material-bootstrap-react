@@ -105,7 +105,7 @@ class ConsultaPaciente extends Component {
         return (
             <div>
                 <Container fluid >
-                    <Table className="mt-5">
+                    <Table bordered className="mt-5">
                         <thead>
                             Pacientes
                             <tr>
