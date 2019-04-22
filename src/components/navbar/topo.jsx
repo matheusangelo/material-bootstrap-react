@@ -15,22 +15,25 @@ class NavBarTopo extends Component {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
-                            <Link to="/" className="nav-link text-white">TCC 2019 - Tensorflow x Pytorch </Link>
+                            <Link to="/" className="nav-link text-white"><b>TCC 2019 - Tensorflow x Pytorch </b></Link>
+                        </li>
+                        <li className="nav-item active">
+                            <Link to="/" className="nav-link text-white">Home </Link>
                         </li>
                         <li className="nav-item dropdown">
                             <button className="btn btn-link nav-link dropdown-toggle text-white" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Cadastro
                             </button>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <Link className="nav-item dropdown-item " to="/">Prontuário</Link>
+                                <Link className="nav-item dropdown-item " to="/prontuario">Prontuário</Link>
                             </div>
                         </li>
                         <li className="nav-item dropdown text-white">
                             <button className="btn btn-link nav-link dropdown-toggle text-white" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Resultados
+                                Consulta
                             </button>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <Link className="nav-item dropdown-item" to="/">Graficos</Link>
+                                <Link className="nav-item dropdown-item" to="/resultados">Resultados</Link>
                             </div>
                         </li>
                     </ul>

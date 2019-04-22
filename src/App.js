@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
-import PaginaInicial from './components/Inicial/Inicial';
+import Prontuario from './components/Paciente/Prontuario';
+import ConsultaPaciente from './components/Paciente/ConsultaPaciente';
+import Resultados from './components/resultados/Resultados';
 import NavBarTopo from './components/navbar/topo';
 
 class App extends Component {
@@ -13,7 +15,9 @@ class App extends Component {
         </header>
         <div className="main-container" style={{ "align": "center" }}>
           <Switch>
-            <Route path="/" exact component={PaginaInicial} />
+          <Route path="/" exact component={ConsultaPaciente} />
+            <Route path="/prontuario" exact component={Prontuario} />
+            <Route path="/resultados" exact component={Resultados} />
           </Switch>
         </div>
       </div>
