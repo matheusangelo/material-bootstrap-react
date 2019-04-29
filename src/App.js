@@ -14,7 +14,6 @@ class App extends Component {
       <div className="App">
         <NavBarTopo />
         <div className="main-container" style={{ "align": "center" }}>
-        
           <Switch>
           <Route path="/" exact component={Home} />
             <Route path="/consulta" exact component={ConsultaPaciente} />

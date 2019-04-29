@@ -57,7 +57,7 @@ class ConsultaPaciente extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            titulo: "Prontuário",
+            titulo: "Pacientes",
             valor: 0,
             data: [],
             pacientes: mock_pacientes,
@@ -105,9 +105,12 @@ class ConsultaPaciente extends Component {
         return (
             <div>
                 <Container fluid >
+                    <div className="mt-3">
+                        {this.state.titulo}
+                    </div>
+                    <hr className="my-2" />
                     <Table bordered className="mt-5">
                         <thead>
-                            Pacientes
                             <tr>
                                 <th>ID</th>
                                 <th>NOME</th>
@@ -117,8 +120,8 @@ class ConsultaPaciente extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.pacientes.map((paciente,i) =>{
-                                return(
+                            {this.state.pacientes.map((paciente, i) => {
+                                return (
                                     <tr>
                                         <td>{paciente.id}</td>
                                         <td>{paciente.nome}</td>
@@ -132,7 +135,6 @@ class ConsultaPaciente extends Component {
                     </Table>
                 </Container>
             </div>
-
         )
     }
 

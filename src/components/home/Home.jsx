@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Jumbotron, Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
     constructor(props) {
@@ -18,7 +19,7 @@ class Home extends Component {
                     <hr className="my-2" />
                     <p>Trabalho de conclusão de curso - 2019</p>
                     <p className="lead">
-                        <Button color="primary">Iniciar</Button>
+                        <Link to = "/consulta" className="btn btn-primary">Iniciar</Link>
                     </p>
                 </Jumbotron>
             </div>
