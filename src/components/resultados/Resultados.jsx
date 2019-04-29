@@ -94,7 +94,86 @@ class Resultados extends Component {
         this.state = {
             resultados: mock_resultados,
             pacientes: mock_pacientes,
+            exibir: false,
         }
+    }
+
+    buscarResultado = () => {
+        this.setState({ exibir: true })
+    }
+
+    get RetornarRelatorios() {
+        return (
+            <Row className="mt-5">
+                <Col>
+                    <Card>
+                        <CardHeader className="text-left">
+                            <b>Resultados:</b>
+                        </CardHeader>
+                        <CardBody>
+                            <Row >
+                                <Col>
+                                    <Row className="text-left ml-2">Pytorch</Row>
+                                    <Row>
+                                        <Table className="striped">
+                                            <thead className="table-dark">
+                                                <tr>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Codigo</th>
+                                                    <th scope="col">Descrição</th>
+                                                    <th scope="col">Probabilidade</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {this.state.resultados.map((resultado, i) => {
+                                                    return (
+                                                        <tr>
+                                                            <td>{resultado.id}</td>
+                                                            <td>{resultado.codigo}</td>
+                                                            <td>{resultado.descricao}</td>
+                                                            <td>{resultado.probabilidade}%</td>
+                                                        </tr>
+                                                    )
+                                                })}
+                                            </tbody>
+                                        </Table>
+                                    </Row>
+                                </Col>
+                            </Row>
+                            <Row >
+                                <Col>
+                                    <Row className="text-left ml-2">TensorFlow</Row>
+                                    <Row>
+                                        <Table className="striped">
+                                            <thead className="table-dark">
+                                                <tr>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Codigo</th>
+                                                    <th scope="col">Descrição</th>
+                                                    <th scope="col">Probabilidade</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {this.state.resultados.map((resultado, i) => {
+                                                    return (
+                                                        <tr>
+                                                            <td>{resultado.id}</td>
+                                                            <td>{resultado.codigo}</td>
+                                                            <td>{resultado.descricao}</td>
+                                                            <td>{resultado.probabilidade}%</td>
+                                                        </tr>
+                                                    )
+                                                })}
+                                            </tbody>
+                                        </Table>
+                                    </Row>
+                                </Col>
+                            </Row>
+                        </CardBody>
+                    </Card>
+                </Col>
+            </Row>
+        )
     }
 
     render() {
@@ -122,82 +201,16 @@ class Resultados extends Component {
                                 </Row>
                                 <Row className="text-right mt-2">
                                     <Col>
-                                        <Button>Buscar</Button>
+                                        <Button onClick={this.buscarResultado}>Buscar</Button>
                                     </Col>
                                 </Row>
                             </CardBody>
                         </Card>
                     </Col>
                 </Row>
-                <Row className="mt-5">
-                    <Col>
-                        <Card>
-                            <CardHeader className="text-left">
-                                <b>Resultados:</b>
-                            </CardHeader>
-                            <CardBody>
-                                <Row >
-                                    <Col>
-                                        <Row className="text-left ml-2">Pytorch</Row>
-                                        <Row>
-                                            <Table className="striped">
-                                                <thead className="table-dark">
-                                                    <tr>
-                                                        <th scope="col">ID</th>
-                                                        <th scope="col">Codigo</th>
-                                                        <th scope="col">Descrição</th>
-                                                        <th scope="col">Probabilidade</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {this.state.resultados.map((resultado, i) => {
-                                                        return (
-                                                            <tr>
-                                                                <td>{resultado.id}</td>
-                                                                <td>{resultado.codigo}</td>
-                                                                <td>{resultado.descricao}</td>
-                                                                <td>{resultado.probabilidade}%</td>
-                                                            </tr>
-                                                        )
-                                                    })}
-                                                </tbody>
-                                            </Table>
-                                        </Row>
-                                    </Col>
-                                </Row>
-                                <Row >
-                                    <Col>
-                                        <Row className="text-left ml-2">TensorFlow</Row>
-                                        <Row>
-                                            <Table className="striped">
-                                                <thead className="table-dark">
-                                                    <tr>
-                                                        <th scope="col">ID</th>
-                                                        <th scope="col">Codigo</th>
-                                                        <th scope="col">Descrição</th>
-                                                        <th scope="col">Probabilidade</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {this.state.resultados.map((resultado, i) => {
-                                                        return (
-                                                            <tr>
-                                                                <td>{resultado.id}</td>
-                                                                <td>{resultado.codigo}</td>
-                                                                <td>{resultado.descricao}</td>
-                                                                <td>{resultado.probabilidade}%</td>
-                                                            </tr>
-                                                        )
-                                                    })}
-                                                </tbody>
-                                            </Table>
-                                        </Row>
-                                    </Col>
-                                </Row>
-                            </CardBody>
-                        </Card>
-                    </Col>
-                </Row>
+
+                {this.state.exibir === true ?  this.RetornarRelatorios : false}
+
             </Container>
         )
     }
