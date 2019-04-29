@@ -106,11 +106,11 @@ class ConsultaPaciente extends Component {
             <div>
                 <Container fluid >
                     <div className="mt-3">
-                        {this.state.titulo}
+                       <h3> {this.state.titulo} </h3>
                     </div>
                     <hr className="my-2" />
                     <Table bordered className="mt-5">
-                        <thead>
+                        <thead className="thead-dark">
                             <tr>
                                 <th>ID</th>
                                 <th>NOME</th>
