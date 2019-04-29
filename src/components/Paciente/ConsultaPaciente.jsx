@@ -68,6 +68,10 @@ class ConsultaPaciente extends Component {
         this.setState({ titulo: "oi" });
     };
 
+    processarProntuario = () =>{
+        alert("Implementar treinamento da rede")
+    }
+
     cadastrar = () => {
         let vetor = this.state.data;
         vetor = [];
@@ -113,10 +117,11 @@ class ConsultaPaciente extends Component {
                         <thead className="thead-dark">
                             <tr>
                                 <th>ID</th>
-                                <th>NOME</th>
-                                <th>IDADE</th>
-                                <th>PRIORIDADE</th>
-                                <th>STATUS</th>
+                                <th>Nome</th>
+                                <th>Idade</th>
+                                <th>Prioridade</th>
+                                <th>Status</th>
+                                <th>Ação</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -128,6 +133,7 @@ class ConsultaPaciente extends Component {
                                         <td>{paciente.idade}</td>
                                         <td>{paciente.prioridade}</td>
                                         <td>{paciente.status}</td>
+                                        <td><Button color="success" onClick={this.processarProntuario}>Processar</Button></td>
                                     </tr>
                                 )
                             })}

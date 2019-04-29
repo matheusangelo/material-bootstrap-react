@@ -25,7 +25,7 @@ class NavBarTopo extends Component {
                                 Cadastro
                             </button>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <Link className="nav-item dropdown-item " to="/prontuario">Prontuário</Link>
+                                <Link className="nav-item dropdown-item " to="/prontuario">Pacientes</Link>
                             </div>
                         </li>
                         <li className="nav-item dropdown text-white">
