@@ -1,57 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Col, Row, Button, Card, CardBody, CardHeader, Table } from 'reactstrap';
+import { Container, Button, Table } from 'reactstrap';
+import { URL_BASE } from '../../include/base'
 
-let mock_pacientes = [
-    {
-        "id": "1",
-        "nome": "Matheus",
-        "idade": "27",
-        "prioridade": "Alta",
-        "status": "OK"
-    },
-    {
-        "id": "2",
-        "nome": "Marcos",
-        "idade": "27",
-        "prioridade": "Alta",
-        "status": "OK"
-    },
-    {
-        "id": "3",
-        "nome": "Lucas",
-        "idade": "27",
-        "prioridade": "Alta",
-        "status": "OK"
-    },
-    {
-        "id": "4",
-        "nome": "Judas",
-        "idade": "27",
-        "prioridade": "Alta",
-        "status": "OK"
-    },
-    {
-        "id": "5",
-        "nome": "Thiago",
-        "idade": "27",
-        "prioridade": "Alta",
-        "status": "OK"
-    },
-    {
-        "id": "6",
-        "nome": "Pedro",
-        "idade": "27",
-        "prioridade": "Alta",
-        "status": "OK"
-    },
-    {
-        "id": "7",
-        "nome": "Paulo",
-        "idade": "27",
-        "prioridade": "Alta",
-        "status": "OK"
-    },
-]
 
 class ConsultaPaciente extends Component {
     constructor(props) {
@@ -60,7 +10,7 @@ class ConsultaPaciente extends Component {
             titulo: "Pacientes",
             valor: 0,
             data: [],
-            pacientes: mock_pacientes,
+            pacientes: [],
         }
     }
 
@@ -68,7 +18,7 @@ class ConsultaPaciente extends Component {
         this.setState({ titulo: "oi" });
     };
 
-    processarProntuario = () =>{
+    processarProntuario = () => {
         alert("Implementar treinamento da rede")
     }
 
@@ -80,20 +30,20 @@ class ConsultaPaciente extends Component {
 
     componentDidMount() {
         try {
-            let URL_BASE = "http://127.0.0.1:5000";
-            fetch(URL_BASE + '/', { method: 'GET', mode: 'cors' }).then((resultado) => {
+            let url = URL_BASE + "/v1/pacientes";
+            fetch(url + '/', { method: 'GET', mode: 'cors' }).then((resultado) => {
                 resultado.json().then((dados) => {
                     let retornos = [];
-                    if (dados.success === true) {
-                        debugger;
-                        for (let i = 0; i < dados.data.length; i++) {
-                            retornos.push({
-                                status: dados.data[i].status
-                            })
-                        }
-                        console.log(retornos)
+                    for (let i = 0; i < dados[0].length; i++) {
+                        retornos.push({
+                            id: dados[0][i]._id,
+                            nome: dados[0][i].nome,
+                            idade: dados[0][i].idade,
+                            prioridade: dados[0][i].prioridade,
+                            status: dados[0][i].status
+                        })
                         this.setState({
-                            retorno: retornos
+                            pacientes: retornos
                         });
                     }
                 })
@@ -110,7 +60,7 @@ class ConsultaPaciente extends Component {
             <div>
                 <Container fluid >
                     <div className="mt-3">
-                       <h3> {this.state.titulo} </h3>
+                        <h3> {this.state.titulo} </h3>
                     </div>
                     <hr className="my-2" />
                     <Table bordered className="mt-5">
@@ -128,7 +78,7 @@ class ConsultaPaciente extends Component {
                             {this.state.pacientes.map((paciente, i) => {
                                 return (
                                     <tr>
-                                        <td>{paciente.id}</td>
+                                        <td>{i}</td>
                                         <td>{paciente.nome}</td>
                                         <td>{paciente.idade}</td>
                                         <td>{paciente.prioridade}</td>

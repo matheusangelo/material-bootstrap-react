@@ -25,12 +25,11 @@ class Prontuario extends Component {
 
     componentDidMount() {
         try {
-            let URL_BASE = "http://127.0.0.1:5000";
+            let URL_BASE = "http://127.0.0.1:5000/v1/pacientes";
             fetch(URL_BASE + '/', { method: 'GET', mode: 'cors' }).then((resultado) => {
                 resultado.json().then((dados) => {
                     let retornos = [];
                     if (dados.success === true) {
-                        debugger;
                         for (let i = 0; i < dados.data.length; i++) {
                             retornos.push({
                                 status: dados.data[i].status
