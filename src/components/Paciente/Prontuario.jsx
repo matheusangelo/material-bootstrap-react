@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Col, Row, Button, Card, CardBody, CardHeader, Table } from 'reactstrap';
+import { Container, Col, Row, Button, Card, CardBody, CardHeader} from 'reactstrap';
+import { URL_BASE } from '../../include/base'
 
 
 class Prontuario extends Component {
@@ -25,7 +26,7 @@ class Prontuario extends Component {
 
     componentDidMount() {
         try {
-            let URL_BASE = "http://127.0.0.1:5000/v1/pacientes";
+            let URL_BASE = URL_BASE +"/v1/pacientes";
             fetch(URL_BASE + '/', { method: 'GET', mode: 'cors' }).then((resultado) => {
                 resultado.json().then((dados) => {
                     let retornos = [];
