@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Col, Row, Button, Card, CardBody, CardHeader} from 'reactstrap';
+import { Container, Col, Row, Button, Card, CardBody, CardHeader } from 'reactstrap';
 import { URL_BASE } from '../../include/base'
 
 
@@ -26,19 +26,20 @@ class Prontuario extends Component {
 
     componentDidMount() {
         try {
-            let URL_BASE = URL_BASE +"/v1/pacientes";
-            fetch(URL_BASE + '/', { method: 'GET', mode: 'cors' }).then((resultado) => {
+            let url = URL_BASE + "/v1/pacientes";
+            fetch(url + '/', { method: 'GET', mode: 'cors' }).then((resultado) => {
                 resultado.json().then((dados) => {
                     let retornos = [];
-                    if (dados.success === true) {
-                        for (let i = 0; i < dados.data.length; i++) {
-                            retornos.push({
-                                status: dados.data[i].status
-                            })
-                        }
-                        console.log(retornos)
+                    for (let i = 0; i < dados[0].length; i++) {
+                        retornos.push({
+                            id: dados[0][i]._id,
+                            nome: dados[0][i].nome,
+                            idade: dados[0][i].idade,
+                            prioridade: dados[0][i].prioridade,
+                            status: dados[0][i].status
+                        })
                         this.setState({
-                            retorno: retornos
+                            pacientes: retornos
                         });
                     }
                 })
@@ -48,6 +49,7 @@ class Prontuario extends Component {
             console.log(e)
         }
     }
+
 
 
     render() {

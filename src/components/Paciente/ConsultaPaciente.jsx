@@ -83,7 +83,11 @@ class ConsultaPaciente extends Component {
                                         <td>{paciente.idade}</td>
                                         <td>{paciente.prioridade}</td>
                                         <td>{paciente.status}</td>
-                                        <td><Button color="success" onClick={this.processarProntuario}>Processar</Button></td>
+                                        <td>
+                                            <Button color="success" onClick={this.processarProntuario}>Processar</Button>
+                                            <Button className="ml-2" color="primary" onClick={this.processarProntuario}>Editar</Button>
+                                            <Button className="ml-2" color="danger" onClick={this.processarProntuario}>Excluir</Button>
+                                        </td>
                                     </tr>
                                 )
                             })}
