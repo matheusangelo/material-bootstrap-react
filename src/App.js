@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
-import Prontuario from './components/Paciente/Prontuario';
-import ConsultaPaciente from './components/Paciente/ConsultaPaciente';
+import Prontuario from './components/paciente/Prontuario';
+import ConsultaPaciente from './components/paciente/ConsultaPaciente';
 import Resultados from './components/resultados/Resultados';
 import NavBarTopo from './components/navbar/topo';
 import Home from './components/home/Home';
