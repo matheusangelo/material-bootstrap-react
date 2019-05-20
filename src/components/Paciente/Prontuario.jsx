@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Col, Row, Button, Card, CardBody, CardHeader } from 'reactstrap';
-import { URL_BASE } from '../../include/base'
+import { Container, Col, Row, Button, Card, CardBody, CardHeader, Table } from 'reactstrap';
+import { URL_BASE } from '../../include/base';
+import { IoIosClose } from 'react-icons/io';
 
 
 class Prontuario extends Component {
@@ -55,12 +56,20 @@ class Prontuario extends Component {
     render() {
         return (
             <div>
-                <Container className="mt-2">
+                <Container className="mt-2 card">
+                    <Row className="mt-2">
+                        <Col><h5>Pacientes:</h5></Col>
+                        <div className="row justify-content-center">
+                            <div className="col">
+                                <hr className="divider" />
+                            </div>
+                        </div>
+                    </Row>
                     <Row className="text-left">
                         <Col>
                             <Card>
                                 <CardHeader>
-                                    <b>{this.state.titulo}</b>
+                                    <b>Ficha de Cadastro</b>
                                 </CardHeader>
                                 <CardBody className="bordered">
                                     <Row className="mt-2">
@@ -108,6 +117,26 @@ class Prontuario extends Component {
                     <Row className="text-right mt-3">
                         <Col>
                             <Button color="primary" className="mb-3" onClick={() => this.cadastrar()}>Cadastrar</Button>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Table bordered>
+                                <thead>
+                                    <tr>
+                                        <th>Sintomas</th>
+                                        <th>Intensidade</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Dor no olhos</td>
+                                        <td>5</td>
+                                        <td><h3><IoIosClose color="red"/></h3></td>
+                                    </tr>
+                                </tbody>
+                            </Table>
                         </Col>
                     </Row>
                 </Container>
