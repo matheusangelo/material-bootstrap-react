@@ -14,9 +14,12 @@ class App extends Component {
         <div className="main-container" style={{ "align": "center" }}>
           <Switch>
           <Route path="/" exact component={Login} />
-            <Route path="/consulta" exact component={ConsultaPaciente} />
-            <Route path="/prontuario" exact component={Prontuario} />
-            <Route path="/resultados" exact component={Resultados} />
+            <Route path="/master/consulta" exact component={ConsultaPaciente} />
+            <Route path="/master/prontuario" exact component={Prontuario} />
+            <Route path="/master/resultados" exact component={Resultados} />
+            <Route path="/convencional/consulta" exact component={ConsultaPaciente} />
+            <Route path="/convencional/prontuario" exact component={Prontuario} />
+            <Route path="/convencional/resultados" exact component={Resultados} />
           </Switch>
         </div>
         <Footer />
