@@ -22,17 +22,12 @@ class Login extends Component {
                         </ul>
                     </div>
                 </nav>
-                <Container>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
+                <Container className="mb-5">
                     <Row className="mt-5">
                         <div className="col-6 mx-auto">
                             <Card>
                                 <CardBody>
-                                    <h5 className="card-title text-center">Login
-                            </h5>
+                                    <h5 className="card-title text-center mb-3">Login</h5>
                                     <form className="form-signin">
                                         <div className="form-label-group">
                                             <input type="email" id="inputEmail" className="form-control" placeholder="Usuário" required autofocus />
