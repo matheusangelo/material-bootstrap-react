@@ -18,7 +18,7 @@ class NavBarTopo extends Component {
                             <Link to="/" className="nav-link text-white"><b>TCC 2019 - Tensorflow x Pytorch </b></Link>
                         </li>
                         <li className="nav-item active">
-                            <Link to="/" className="nav-link text-white">Home </Link>
+                            <Link to="/home" className="nav-link text-white">Home </Link>
                         </li>
                         <li className="nav-item dropdown">
                             <button className="btn btn-link nav-link dropdown-toggle text-white" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -26,6 +26,7 @@ class NavBarTopo extends Component {
                             </button>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <Link className="nav-item dropdown-item " to="/prontuario">Pacientes</Link>
+                                <Link className="nav-item dropdown-item " to="/prontuario">Doenças</Link>
                             </div>
                         </li>
                         <li className="nav-item dropdown text-white">

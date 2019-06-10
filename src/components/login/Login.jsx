@@ -25,6 +25,8 @@ class Login extends Component {
                 <Container className="mb-5">
                     <Row className="mt-5">
                         <div className="col-6 mx-auto">
+                            <br />
+                            <br />
                             <Card>
                                 <CardBody>
                                     <h5 className="card-title text-center mb-3">Login</h5>

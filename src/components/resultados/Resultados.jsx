@@ -6,32 +6,32 @@ let mock_resultados = [
     {
         "id": "1",
         "codigo": 1,
-        "descricao": "Câncer",
-        "probabilidade": 90,
+        "descricao": "Glaucoma",
+        "probabilidade": 80.3,
     },
     {
         "id": "2",
         "codigo": 2,
-        "descricao": "Câncer",
-        "probabilidade": 90,
+        "descricao": "Catarata",
+        "probabilidade": 10.2,
     },
     {
         "id": "3",
         "codigo": 3,
-        "descricao": "Câncer",
-        "probabilidade": 90,
+        "descricao": "Retinopatia diabética",
+        "probabilidade": 9.3,
     },
     {
         "id": "4",
         "codigo": 4,
-        "descricao": "Câncer",
-        "probabilidade": 90,
+        "descricao": "Degeneração macular relacionada a idade",
+        "probabilidade": 0.15
     },
     {
         "id": "5",
         "codigo": 5,
-        "descricao": "Câncer",
-        "probabilidade": 90,
+        "descricao": "Outros",
+        "probabilidade": 0.05,
     },
 ]
 

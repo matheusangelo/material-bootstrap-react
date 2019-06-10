@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Jumbotron, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import NavBarTopo from './../navbar/topo'
 
 class Home extends Component {
     constructor(props) {
@@ -13,6 +14,7 @@ class Home extends Component {
     render() {
         return (
             <div>
+                <NavBarTopo/>
                 <Jumbotron>
                     <h1 className="display-3">Bem-vindo!</h1>
                     <p className="lead">Utilização de Pytorch x Tensorflow no diagnótiscos de doenças oculares.</p>
