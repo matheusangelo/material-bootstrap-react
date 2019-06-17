@@ -27,7 +27,7 @@ class Login extends Component {
                         <div className="col-6 mx-auto">
                             <br />
                             <br />
-                            <Card>
+                            <Card className="login">
                                 <CardBody>
                                     <h5 className="card-title text-center mb-3">Login</h5>
                                     <form className="form-signin">

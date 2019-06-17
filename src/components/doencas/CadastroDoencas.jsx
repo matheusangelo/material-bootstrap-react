@@ -58,7 +58,7 @@ class CadastroDoencas extends Component {
             <div>
                 <Container className="mt-2 card">
                     <Row className="mt-2">
-                        <Col><h5>Pacientes:</h5></Col>
+                        <Col><h5>Carga Doenças:</h5></Col>
                         <div className="row justify-content-center">
                             <div className="col">
                                 <hr className="divider" />
@@ -77,28 +77,16 @@ class CadastroDoencas extends Component {
                                             Nome:
                                             <input type="text"
                                                 className="form-control"
-                                                placeholder="Nome do Paciente" />
+                                                placeholder="Nome da Doença" />
                                         </Col>
                                     </Row>
                                     <Row className="mt-4">
-                                        <Col xs="3">
-                                            Sexo:
-                                            <select className="form-control">
-                                                <option>Selecione...</option>
-                                                <option>Masculino</option>
-                                                <option>Feminino</option>
-                                            </select>
-                                        </Col>
                                         <Col xs="6">
-                                            Sintomas:
-                                            <select className="form-control">
-                                                <option>Selecione...</option>
-                                            </select>
+                                            Sintomas
+                                            <input type="text" className="form-control"></input>
                                         </Col>
-                                    </Row>
-                                    <Row className="mt-4">
                                         <Col xs="3">
-                                            Intensidade:
+                                            Grau:
                                             <select className="form-control">
                                                 <option>Selecione...</option>
                                             </select>
@@ -124,16 +112,18 @@ class CadastroDoencas extends Component {
                             <Table bordered>
                                 <thead>
                                     <tr>
+                                        <th>Nome</th>
                                         <th>Sintomas</th>
-                                        <th>Intensidade</th>
+                                        <th>Grau</th>
                                         <th>Ação</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Dor no olhos</td>
+                                        <td>Catarata</td>
+                                        <td>Visão Embaçada</td>
                                         <td>5</td>
-                                        <td><h3><IoIosClose color="red"/></h3></td>
+                                        <td><h3><IoIosClose color="red" /></h3></td>
                                     </tr>
                                 </tbody>
                             </Table>

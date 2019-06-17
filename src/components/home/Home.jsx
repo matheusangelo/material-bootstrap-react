@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Jumbotron, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import NavBarTopo from './../navbar/topo'
+import NavBarTopo from '../navbar/navbarAdmin'
 
 class Home extends Component {
     constructor(props) {

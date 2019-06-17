@@ -1,97 +1,100 @@
 .App {
-  text-align: center;
-  font-family: Tahoma;
-  color: #282c34;
+    text-align: center;
+    font-family: Tahoma;
+    color: #282c34;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .footer {
-  height: 30px;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  font-size: small;
-  font-weight: bold;
-  padding-top: -5px;
-  padding-left: 10px;
-  vertical-align: middle;
-  color: white;
-  background-color: black;
+    height: 30px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: small;
+    font-weight: bold;
+    padding-top: -5px;
+    padding-left: 10px;
+    vertical-align: middle;
+    color: white;
+    background-color: black;
 }
 
 .card-signin {
-  border: 0;
-  border-radius: 1rem;
-  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
 }
 
 .card-signin .card-title {
-  margin-bottom: 2rem;
-  font-weight: 300;
-  font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    font-size: 1.5rem;
 }
 
 .card-signin .card-body {
-  padding: 2rem;
+    padding: 2rem;
 }
 
 .form-signin {
-  width: 100%;
-  border-radius: 10px;
+    width: 100%;
+    border-radius: 10px;
 }
 
 .form-signin .btn {
-  font-size: 80%;
-  border-radius: 5rem;
-  letter-spacing: .1rem;
-  font-weight: bold;
-  padding: 1rem;
-  transition: all 0.2s;
+    font-size: 80%;
+    border-radius: 5rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    padding: 1rem;
+    transition: all 0.2s;
 }
 
 .form-label-group {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .form-label-group input {
-  border-radius: 2rem;
+    border-radius: 2rem;
 }
 
-
 .form-label-group>label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  width: 100%;
-  margin-bottom: 0;
-  line-height: 1.5;
-  color: #495057;
-  border: 1px solid transparent;
-  border-radius: .25rem;
-  transition: all .1s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    margin-bottom: 0;
+    line-height: 1.5;
+    color: #495057;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: all .1s ease-in-out;
+}
+
+.login {
+    -webkit-box-shadow: 1px 1px 1px 1px rgb(233, 225, 225);
 }
