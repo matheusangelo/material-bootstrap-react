@@ -18,12 +18,15 @@ class Login extends Component {
             login: this.state.email,
             senha: this.state.senha
         }
-
         let permissao = Autenticacao(login)
-
-        if (permissao)
-            return <Redirect to="/home" />
+        this.renderRedirect(permissao)
     }
+
+    renderRedirect = (permissao) => {
+        if (permissao) {
+            return <Redirect to="/home" />
+        }
+      }
 
     handleChange = (e) => {
         let mudanca = {}
@@ -51,7 +54,7 @@ class Login extends Component {
                             <Card className="login">
                                 <CardBody>
                                     <h5 className="card-title text-center mb-3">Login</h5>
-                                    <form className="form-signin" onSubmit={(e) => this.validarCampos(e)}>
+                                    <div className="form-signin">
                                         <div className="form-label-group">
                                             <input type="email"
                                                 id="inputEmail"
@@ -78,12 +81,14 @@ class Login extends Component {
                                                 className="custom-control-input"
                                                 id="customCheck1" />
                                             <label className="custom-control-label mt-2" for="customCheck1">Lembrar senha</label>
-                                            <button className="btn btn-lg btn-success btn-block text-uppercase mr-3 mt-3" type="submit"> Entrar</button>
+                                            <button className="btn btn-lg btn-success btn-block text-uppercase mr-3 mt-3"
+                                                type="button"
+                                                onClick={(e) => this.validarCampos(e)}> Entrar</button>
                                         </div>
                                         <hr className="my-4" />
                                         <button className="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i className="fab fa-google mr-2"></i> Cadastrar</button>
                                         <button className="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i className="fab fa-facebook-f mr-2"></i>Esqueci a senha</button>
-                                    </form>
+                                    </div>
                                 </CardBody>
                             </Card>
                         </div>
