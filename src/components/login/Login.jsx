@@ -9,7 +9,8 @@ class Login extends Component {
         super(props);
         this.state = {
             email: "",
-            senha: ""
+            senha: "",
+            permissao: false
         }
     }
 
@@ -22,11 +23,11 @@ class Login extends Component {
         this.renderRedirect(permissao)
     }
 
-    renderRedirect = (permissao) => {
-        if (permissao) {
-            return <Redirect to="/home" />
-        }
-      }
+    renderRedirect = (redirect) => {
+        this.setState({
+            permissao: redirect
+        })
+    }
 
     handleChange = (e) => {
         let mudanca = {}
@@ -35,6 +36,9 @@ class Login extends Component {
     }
 
     render() {
+        if (this.state.permissao) {
+            return <Redirect to="/home" />
+        }
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-dark">
@@ -83,7 +87,7 @@ class Login extends Component {
                                             <label className="custom-control-label mt-2" for="customCheck1">Lembrar senha</label>
                                             <button className="btn btn-lg btn-success btn-block text-uppercase mr-3 mt-3"
                                                 type="button"
-                                                onClick={(e) => this.validarCampos(e)}> Entrar</button>
+                                                onClick={() => this.validarCampos()}> Entrar</button>
                                         </div>
                                         <hr className="my-4" />
                                         <button className="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i className="fab fa-google mr-2"></i> Cadastrar</button>

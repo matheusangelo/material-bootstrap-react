@@ -3,7 +3,6 @@ let login = {
     senha: "123456"
 }
 export const Autenticacao = (autenticacao) => {
-    debugger;
     if (!validarCampos(login, autenticacao)) {
         return false;
     }
