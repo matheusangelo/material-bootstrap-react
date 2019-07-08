@@ -105,6 +105,7 @@ class Resultados extends Component {
     get RetornarRelatorios() {
         return (
             <Row className="mt-5">
+                {/* <NavBarTopo/> */}
                 <Col>
                     <Card>
                         <CardHeader className="text-left">

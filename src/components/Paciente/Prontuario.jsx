@@ -56,6 +56,7 @@ class Prontuario extends Component {
     render() {
         return (
             <div>
+                {/* <NavBarTopo/> */}
                 <Container className="mt-2 card">
                     <Row className="mt-2">
                         <Col><h5>Pacientes:</h5></Col>
