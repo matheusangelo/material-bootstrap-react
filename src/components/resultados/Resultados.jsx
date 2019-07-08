@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Col, Row, Button, Card, CardBody, CardHeader, Table } from 'reactstrap';
+import NavBarTopo from '../navbar/navbarAdmin'
 
 
 let mock_resultados = [
@@ -105,7 +106,7 @@ class Resultados extends Component {
     get RetornarRelatorios() {
         return (
             <Row className="mt-5">
-                {/* <NavBarTopo/> */}
+                <NavBarTopo/>
                 <Col>
                     <Card>
                         <CardHeader className="text-left">

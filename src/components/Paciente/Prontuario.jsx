@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Col, Row, Button, Card, CardBody, CardHeader, Table } from 'reactstrap';
 import { URL_BASE } from '../../include/base';
 import { IoIosClose } from 'react-icons/io';
+import NavBarTopo from '../navbar/navbarAdmin';
 
 
 class Prontuario extends Component {
@@ -56,7 +57,7 @@ class Prontuario extends Component {
     render() {
         return (
             <div>
-                {/* <NavBarTopo/> */}
+                <NavBarTopo/>
                 <Container className="mt-2 card">
                     <Row className="mt-2">
                         <Col><h5>Pacientes:</h5></Col>

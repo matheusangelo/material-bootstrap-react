@@ -59,7 +59,7 @@ class ConsultaPaciente extends Component {
     render() {
         return (
             <div>
-                <navbarAdmin/>
+                <NavBarTopo/>
                 <Container fluid >
                     <div className="mt-3">
                         <h3> {this.state.titulo} </h3>
