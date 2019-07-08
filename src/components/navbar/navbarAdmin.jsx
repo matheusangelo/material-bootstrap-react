@@ -25,8 +25,8 @@ class NavBarTopo extends Component {
                                 Cadastro
                             </button>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <Link className="nav-item dropdown-item " to="/prontuario">Pacientes</Link>
-                                <Link className="nav-item dropdown-item " to="/prontuario">Doenças</Link>
+                                <Link className="nav-item dropdown-item " to="/master/prontuario">Pacientes</Link>
+                                <Link className="nav-item dropdown-item " to="/master/prontuario">Doenças</Link>
                             </div>
                         </li>
                         <li className="nav-item dropdown text-white">
@@ -34,7 +34,7 @@ class NavBarTopo extends Component {
                                 Consulta
                             </button>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <Link className="nav-item dropdown-item" to="/resultados">Resultados</Link>
+                                <Link className="nav-item dropdown-item" to="/master/resultados">Resultados</Link>
                             </div>
                         </li>
                     </ul>

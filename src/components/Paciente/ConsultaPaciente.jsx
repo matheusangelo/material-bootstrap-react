@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Button, Table } from 'reactstrap';
 import { URL_BASE } from '../../include/base'
+import NavBarTopo from '../navbar/navbarAdmin'
 
 
 class ConsultaPaciente extends Component {
@@ -58,7 +59,7 @@ class ConsultaPaciente extends Component {
     render() {
         return (
             <div>
-                {/* <NavBarTopo/> */}
+                <navbarAdmin/>
                 <Container fluid >
                     <div className="mt-3">
                         <h3> {this.state.titulo} </h3>

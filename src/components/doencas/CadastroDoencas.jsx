@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Col, Row, Button, Card, CardBody, CardHeader, Table } from 'reactstrap';
 import { URL_BASE } from '../../include/base';
 import { IoIosClose } from 'react-icons/io';
-
+import NavBarTopo from '../navbar/navbarAdmin'
 
 class CadastroDoencas extends Component {
     constructor(props) {
@@ -56,6 +56,7 @@ class CadastroDoencas extends Component {
     render() {
         return (
             <div>
+                <NavBarTopo/>
                 <Container className="mt-2 card">
                     <Row className="mt-2">
                         <Col><h5>Carga Doenças:</h5></Col>
