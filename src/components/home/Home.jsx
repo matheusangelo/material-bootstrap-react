@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Jumbotron, Button } from 'reactstrap';
+import { Jumbotron} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import NavBarTopo from '../navbar/navbarAdmin'
 
