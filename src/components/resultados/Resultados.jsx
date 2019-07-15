@@ -106,7 +106,6 @@ class Resultados extends Component {
     get RetornarRelatorios() {
         return (
             <Row className="mt-5">
-                <NavBarTopo/>
                 <Col>
                     <Card>
                         <CardHeader className="text-left">
@@ -180,40 +179,41 @@ class Resultados extends Component {
 
     render() {
         return (
-            <Container>
-                <Row className="mt-5">
-                    <Col>
-                        <Card>
-                            <CardHeader className="text-left">
-                                <b>Consulta:</b>
-                            </CardHeader>
-                            <CardBody>
-                                <Row className="text-left">
-                                    <Col>
-                                        Pacientes:
+            <>
+                <NavBarTopo />
+                <Container>
+                    <Row className="mt-5">
+                        <Col>
+                            <Card>
+                                <CardHeader className="text-left">
+                                    <b>Consulta:</b>
+                                </CardHeader>
+                                <CardBody>
+                                    <Row className="text-left">
+                                        <Col>
+                                            Pacientes:
                                         <select className="form-control mt-2">
-                                            <option>Selecione...</option>
-                                            {this.state.pacientes.map((paciente, i) => {
-                                                return (
-                                                    <option>{paciente.nome}</option>
-                                                )
-                                            })}
-                                        </select>
-                                    </Col>
-                                </Row>
-                                <Row className="text-right mt-2">
-                                    <Col>
-                                        <Button onClick={this.buscarResultado}>Buscar</Button>
-                                    </Col>
-                                </Row>
-                            </CardBody>
-                        </Card>
-                    </Col>
-                </Row>
-
-                {this.state.exibir === true ?  this.RetornarRelatorios : false}
-
-            </Container>
+                                                <option>Selecione...</option>
+                                                {this.state.pacientes.map((paciente, i) => {
+                                                    return (
+                                                        <option>{paciente.nome}</option>
+                                                    )
+                                                })}
+                                            </select>
+                                        </Col>
+                                    </Row>
+                                    <Row className="text-right mt-2">
+                                        <Col>
+                                            <Button onClick={this.buscarResultado}>Buscar</Button>
+                                        </Col>
+                                    </Row>
+                                </CardBody>
+                            </Card>
+                        </Col>
+                    </Row>
+                    {this.state.exibir === true ? this.RetornarRelatorios : false}
+                </Container>
+            </>
         )
     }
 

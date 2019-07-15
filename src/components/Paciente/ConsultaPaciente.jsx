@@ -32,16 +32,18 @@ class ConsultaPaciente extends Component {
     componentDidMount() {
         try {
             let url = URL_BASE + "/v1/pacientes";
+            const DADOS_INDEX = 0;
             fetch(url + '/', { method: 'GET', mode: 'cors' }).then((resultado) => {
                 resultado.json().then((dados) => {
+                    console.log(dados)
                     let retornos = [];
-                    for (let i = 0; i < dados[0].length; i++) {
+                    for (let i = 0; i < dados[DADOS_INDEX].length; i++) {
                         retornos.push({
-                            id: dados[0][i]._id,
-                            nome: dados[0][i].nome,
-                            idade: dados[0][i].idade,
-                            prioridade: dados[0][i].prioridade,
-                            status: dados[0][i].status
+                            id: dados[DADOS_INDEX][i]._id,
+                            nome: dados[DADOS_INDEX][i].nome,
+                            idade: dados[DADOS_INDEX][i].idade,
+                            prioridade: dados[DADOS_INDEX][i].prioridade,
+                            status: dados[DADOS_INDEX][i].status
                         })
                         this.setState({
                             pacientes: retornos
