@@ -23,12 +23,6 @@ class ConsultaPaciente extends Component {
         alert("Implementar treinamento da rede")
     }
 
-    cadastrar = () => {
-        let vetor = this.state.data;
-        vetor = [];
-        alert(vetor.length);
-    }
-
     componentDidMount() {
         try {
             let url = URL_BASE + "/v1/pacientes";

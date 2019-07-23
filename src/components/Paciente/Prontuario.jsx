@@ -29,16 +29,17 @@ class Prontuario extends Component {
     componentDidMount() {
         try {
             let url = URL_BASE + "/v1/pacientes";
+            const INDEX_DADOS = 0;
             fetch(url + '/', { method: 'GET', mode: 'cors' }).then((resultado) => {
                 resultado.json().then((dados) => {
                     let retornos = [];
-                    for (let i = 0; i < dados[0].length; i++) {
+                    for (let i = 0; i < dados[INDEX_DADOS].length; i++) {
                         retornos.push({
-                            id: dados[0][i]._id,
-                            nome: dados[0][i].nome,
-                            idade: dados[0][i].idade,
-                            prioridade: dados[0][i].prioridade,
-                            status: dados[0][i].status
+                            id: dados[INDEX_DADOS][i]._id,
+                            nome: dados[INDEX_DADOS][i].nome,
+                            idade: dados[INDEX_DADOS][i].idade,
+                            prioridade: dados[INDEX_DADOS][i].prioridade,
+                            status: dados[INDEX_DADOS][i].status
                         })
                         this.setState({
                             pacientes: retornos
