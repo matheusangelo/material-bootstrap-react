@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Button, Table } from 'reactstrap';
+import {Table } from 'reactstrap';
+import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
 import { URL_BASE } from '../../include/base'
 import NavBarTopo from '../navbar/navbarAdmin'
 
@@ -56,7 +57,7 @@ class ConsultaPaciente extends Component {
         return (
             <div>
                 <NavBarTopo/>
-                <Container fluid >
+                <MDBContainer fluid >
                     <div className="mt-3">
                         <h3> {this.state.titulo} </h3>
                     </div>
@@ -82,16 +83,16 @@ class ConsultaPaciente extends Component {
                                         <td>{paciente.prioridade}</td>
                                         <td>{paciente.status}</td>
                                         <td>
-                                            <Button color="success" onClick={this.processarProntuario}>Processar</Button>
-                                            <Button className="ml-2" color="primary" onClick={this.processarProntuario}>Editar</Button>
-                                            <Button className="ml-2" color="danger" onClick={this.processarProntuario}>Excluir</Button>
+                                            <MDBBtn color="success" onClick={this.processarProntuario}>Processar</MDBBtn>
+                                            <MDBBtn className="ml-2" color="primary" onClick={this.processarProntuario}>Editar</MDBBtn>
+                                            <MDBBtn className="ml-2" color="danger" onClick={this.processarProntuario}>Excluir</MDBBtn>
                                         </td>
                                     </tr>
                                 )
                             })}
                         </tbody>
                     </Table>
-                </Container>
+                </MDBContainer>
             </div>
         )
     }

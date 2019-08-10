@@ -90,8 +90,8 @@ class Login extends Component {
                                                 onClick={() => this.validarCampos()}> Entrar</button>
                                         </div>
                                         <hr className="my-4" />
-                                        <button className="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i className="fab fa-google mr-2"></i> Cadastrar</button>
-                                        <button className="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i className="fab fa-facebook-f mr-2"></i>Esqueci a senha</button>
+                                        <button className="btn btn-lg btn-block text-uppercase" type="submit"> Cadastrar</button>
+                                        <button className="btn btn-lg btn-block text-uppercase" type="submit">Esqueci a senha</button>
                                     </div>
                                 </CardBody>
                             </Card>
