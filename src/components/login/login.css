@@ -1,0 +1,19 @@
+.login-container{
+    margin-top: 5%
+}
+
+.login-form {
+    height: 60%;
+    width: 50%;
+    margin-top: 5%;
+    margin-left: 25%;
+    margin-rigth: 25%;
+    margin-bottom: 5%;   
+}
+
+.login-btn{
+    width: 60%;
+}
+.quebra{
+    color: orange
+}

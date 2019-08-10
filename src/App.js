@@ -6,7 +6,7 @@ import ConsultaPaciente from './components/Paciente/ConsultaPaciente';
 import Resultados from './components/resultados/Resultados';
 import CadastroDoencas from './components/doencas/CadastroDoencas'
 import Footer from './components/footer/Footer';
-import Login from './components/login/Login'
+import Login from './components/login/login'
 import Home from './components/home/Home'
 
 class App extends Component {
