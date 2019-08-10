@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { Container, Col, Row, Button, Card, CardBody, CardHeader, Table } from 'reactstrap';
 import { URL_BASE } from '../../include/base';
 import { IoIosClose } from 'react-icons/io';
-import NavBarTopo from '../navbar/navbarAdmin';
+import NavBarTopo from '../navbar/navbarAdmin'
 
-
-class Prontuario extends Component {
+class CadastroDoencas extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -29,17 +28,16 @@ class Prontuario extends Component {
     componentDidMount() {
         try {
             let url = URL_BASE + "/v1/pacientes";
-            const INDEX_DADOS = 0;
             fetch(url + '/', { method: 'GET', mode: 'cors' }).then((resultado) => {
                 resultado.json().then((dados) => {
                     let retornos = [];
-                    for (let i = 0; i < dados[INDEX_DADOS].length; i++) {
+                    for (let i = 0; i < dados[0].length; i++) {
                         retornos.push({
-                            id: dados[INDEX_DADOS][i]._id,
-                            nome: dados[INDEX_DADOS][i].nome,
-                            idade: dados[INDEX_DADOS][i].idade,
-                            prioridade: dados[INDEX_DADOS][i].prioridade,
-                            status: dados[INDEX_DADOS][i].status
+                            id: dados[0][i]._id,
+                            nome: dados[0][i].nome,
+                            idade: dados[0][i].idade,
+                            prioridade: dados[0][i].prioridade,
+                            status: dados[0][i].status
                         })
                         this.setState({
                             pacientes: retornos
@@ -61,7 +59,7 @@ class Prontuario extends Component {
                 <NavBarTopo/>
                 <Container className="mt-2 card">
                     <Row className="mt-2">
-                        <Col><h5>Pacientes:</h5></Col>
+                        <Col><h5>Carga Doenças:</h5></Col>
                         <div className="row justify-content-center">
                             <div className="col">
                                 <hr className="divider" />
@@ -80,28 +78,16 @@ class Prontuario extends Component {
                                             Nome:
                                             <input type="text"
                                                 className="form-control"
-                                                placeholder="Nome do Paciente" />
+                                                placeholder="Nome da Doença" />
                                         </Col>
                                     </Row>
                                     <Row className="mt-4">
-                                        <Col xs="3">
-                                            Sexo:
-                                            <select className="form-control">
-                                                <option>Selecione...</option>
-                                                <option>Masculino</option>
-                                                <option>Feminino</option>
-                                            </select>
-                                        </Col>
                                         <Col xs="6">
-                                            Sintomas:
-                                            <select className="form-control">
-                                                <option>Selecione...</option>
-                                            </select>
+                                            Sintomas
+                                            <input type="text" className="form-control"></input>
                                         </Col>
-                                    </Row>
-                                    <Row className="mt-4">
                                         <Col xs="3">
-                                            Intensidade:
+                                            Grau:
                                             <select className="form-control">
                                                 <option>Selecione...</option>
                                             </select>
@@ -127,16 +113,18 @@ class Prontuario extends Component {
                             <Table bordered>
                                 <thead>
                                     <tr>
+                                        <th>Nome</th>
                                         <th>Sintomas</th>
-                                        <th>Intensidade</th>
+                                        <th>Grau</th>
                                         <th>Ação</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Dor no olhos</td>
+                                        <td>Catarata</td>
+                                        <td>Visão Embaçada</td>
                                         <td>5</td>
-                                        <td><h3><IoIosClose color="red"/></h3></td>
+                                        <td><h3><IoIosClose color="red" /></h3></td>
                                     </tr>
                                 </tbody>
                             </Table>
@@ -149,4 +137,4 @@ class Prontuario extends Component {
     }
 
 }
-export default Prontuario;
+export default CadastroDoencas;

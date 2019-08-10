@@ -1,37 +1,38 @@
 import React, { Component } from 'react';
 import { Container, Col, Row, Button, Card, CardBody, CardHeader, Table } from 'reactstrap';
+import NavBarTopo from '../navbar/navbarAdmin'
 
 
 let mock_resultados = [
     {
         "id": "1",
         "codigo": 1,
-        "descricao": "Câncer",
-        "probabilidade": 90,
+        "descricao": "Glaucoma",
+        "probabilidade": 80.3,
     },
     {
         "id": "2",
         "codigo": 2,
-        "descricao": "Câncer",
-        "probabilidade": 90,
+        "descricao": "Catarata",
+        "probabilidade": 10.2,
     },
     {
         "id": "3",
         "codigo": 3,
-        "descricao": "Câncer",
-        "probabilidade": 90,
+        "descricao": "Retinopatia diabética",
+        "probabilidade": 9.3,
     },
     {
         "id": "4",
         "codigo": 4,
-        "descricao": "Câncer",
-        "probabilidade": 90,
+        "descricao": "Degeneração macular relacionada a idade",
+        "probabilidade": 0.15
     },
     {
         "id": "5",
         "codigo": 5,
-        "descricao": "Câncer",
-        "probabilidade": 90,
+        "descricao": "Outros",
+        "probabilidade": 0.05,
     },
 ]
 
@@ -178,40 +179,41 @@ class Resultados extends Component {
 
     render() {
         return (
-            <Container>
-                <Row className="mt-5">
-                    <Col>
-                        <Card>
-                            <CardHeader className="text-left">
-                                <b>Consulta:</b>
-                            </CardHeader>
-                            <CardBody>
-                                <Row className="text-left">
-                                    <Col>
-                                        Pacientes:
+            <>
+                <NavBarTopo />
+                <Container>
+                    <Row className="mt-5">
+                        <Col>
+                            <Card>
+                                <CardHeader className="text-left">
+                                    <b>Consulta:</b>
+                                </CardHeader>
+                                <CardBody>
+                                    <Row className="text-left">
+                                        <Col>
+                                            Pacientes:
                                         <select className="form-control mt-2">
-                                            <option>Selecione...</option>
-                                            {this.state.pacientes.map((paciente, i) => {
-                                                return (
-                                                    <option>{paciente.nome}</option>
-                                                )
-                                            })}
-                                        </select>
-                                    </Col>
-                                </Row>
-                                <Row className="text-right mt-2">
-                                    <Col>
-                                        <Button onClick={this.buscarResultado}>Buscar</Button>
-                                    </Col>
-                                </Row>
-                            </CardBody>
-                        </Card>
-                    </Col>
-                </Row>
-
-                {this.state.exibir === true ?  this.RetornarRelatorios : false}
-
-            </Container>
+                                                <option>Selecione...</option>
+                                                {this.state.pacientes.map((paciente, i) => {
+                                                    return (
+                                                        <option>{paciente.nome}</option>
+                                                    )
+                                                })}
+                                            </select>
+                                        </Col>
+                                    </Row>
+                                    <Row className="text-right mt-2">
+                                        <Col>
+                                            <Button onClick={this.buscarResultado}>Buscar</Button>
+                                        </Col>
+                                    </Row>
+                                </CardBody>
+                            </Card>
+                        </Col>
+                    </Row>
+                    {this.state.exibir === true ? this.RetornarRelatorios : false}
+                </Container>
+            </>
         )
     }
 
