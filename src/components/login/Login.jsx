@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { Container, Row, Card, CardBody } from 'reactstrap'
 import { Link } from 'react-router-dom';
+import {
+    MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline,
+    MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
+} from "mdbreact";
 import { Autenticacao } from './Autenticacao.js';
 import Redirect from 'react-router-dom/Redirect';
 
@@ -41,15 +45,11 @@ class Login extends Component {
         }
         return (
             <div>
-                <nav className="navbar navbar-expand-lg navbar-light bg-dark">
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav mr-auto">
-                            <li className="nav-item active">
-                                <Link to="/" className="nav-link text-white"><b>TCC 2019 - Tensorflow x Pytorch </b></Link>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+                <MDBNavbar color="indigo" dark expand="md">
+                    <MDBNavbarBrand>
+                        <strong className="white-text">DiagnosticIA</strong>
+                    </MDBNavbarBrand>
+                </MDBNavbar>
                 <Container className="mb-5">
                     <Row className="mt-5">
                         <div className="col-6 mx-auto">

@@ -1,47 +1,55 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import {
+    MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline,
+    MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
+} from "mdbreact";
 
-class NavBarTopo extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            cor: ""
-        }
+
+class NavbarTopo extends Component {
+    state = {
+        isOpen: false
+    };
+
+    toggleCollapse = () => {
+        this.setState({ isOpen: !this.state.isOpen });
     }
 
     render() {
         return (
-            <nav className="navbar navbar-expand-lg navbar-light bg-dark">
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
-                            <Link to="/home" className="nav-link text-white"><b>DiagnosticIA</b></Link>
-                        </li>
-                        <li className="nav-item active">
-                            <Link to="/home" className="nav-link text-white">Home </Link>
-                        </li>
-                        <li className="nav-item dropdown">
-                            <button className="btn btn-link nav-link dropdown-toggle text-white" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Cadastro
-                            </button>
-                            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <Link className="nav-item dropdown-item " to="/master/prontuario">Pacientes</Link>
-                                <Link className="nav-item dropdown-item " to="/master/prontuario">Doenças</Link>
-                            </div>
-                        </li>
-                        <li className="nav-item dropdown text-white">
-                            <button className="btn btn-link nav-link dropdown-toggle text-white" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Consulta
-                            </button>
-                            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <Link className="nav-item dropdown-item" to="/master/resultados">Resultados</Link>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        )
+            <MDBNavbar color="indigo" dark expand="md">
+                <MDBNavbarBrand>
+                    <strong className="white-text">DiagnosticIA</strong>
+                </MDBNavbarBrand>
+                <MDBNavbarToggler onClick={this.toggleCollapse} />
+                <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
+                    <MDBNavbarNav left>
+                        <MDBNavItem>
+                            <MDBDropdown>
+                                <MDBDropdownToggle nav caret>
+                                    <span className="mr-2">Consultas</span>
+                                </MDBDropdownToggle>
+                                <MDBDropdownMenu>
+                                    <MDBDropdownItem href="/master/consulta">Pacientes</MDBDropdownItem>
+                                    <MDBDropdownItem href="/master/resultados">Resultados</MDBDropdownItem>
+                                </MDBDropdownMenu>
+                            </MDBDropdown>
+                        </MDBNavItem>
+                        <MDBNavItem>
+                            <MDBDropdown>
+                                <MDBDropdownToggle nav caret>
+                                    <span className="mr-2">Cadastro</span>
+                                </MDBDropdownToggle>
+                                <MDBDropdownMenu>
+                                    <MDBDropdownItem href="/master/doencas">Doenças</MDBDropdownItem>
+                                    <MDBDropdownItem href="/master/prontuario">Prontuário</MDBDropdownItem>
+                                </MDBDropdownMenu>
+                            </MDBDropdown>
+                        </MDBNavItem>
+                    </MDBNavbarNav>
+                </MDBCollapse>
+            </MDBNavbar>
+        );
     }
 }
 
-export default NavBarTopo;
+export default NavbarTopo;
