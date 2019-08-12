@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
-import Prontuario from './components/Paciente/Prontuario';
-import ConsultaPaciente from './components/Paciente/ConsultaPaciente';
+import Prontuario from './components/paciente/Prontuario';
+import ConsultaPaciente from './components/paciente/ConsultaPaciente';
 import Resultados from './components/resultados/Resultados';
 import CadastroDoencas from './components/doencas/CadastroDoencas'
 import Footer from './components/footer/Footer';
 import Login from './components/login/login'
 import Home from './components/home/Home'
+import CadastroLogin from './components/login/novo-login';
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
         <div className="main-container" style={{ "align": "center" }}>
           <Switch>
             <Route path="/" exact component={Login} />
+            <Route path="/novo" exact component={CadastroLogin} />
             <Route path="/home" exact component={Home} />
             <Route path="/master/consulta" exact component={ConsultaPaciente} />
             <Route path="/master/prontuario" exact component={Prontuario} />
