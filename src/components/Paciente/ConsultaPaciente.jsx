@@ -23,7 +23,7 @@ export default function ConsultaPaciente() {
                     <CardHeader className=" bg-primary">
                         Pacientes
                     </CardHeader>
-                    <Table bordered striped hover  responsive className="table-sm">
+                    <Table bordered striped hover  responsive className="table-responsive-md btn-table">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -44,7 +44,7 @@ export default function ConsultaPaciente() {
                                         <td>{paciente.prioridade}</td>
                                         <td>{paciente.status}</td>
                                         <td>
-                                            <MDBBtn color="success" className="btn-md" onClick={() => alert("oi")}>Processar</MDBBtn>
+                                            <MDBBtn className="btn btn-indigo btn-md m-0" onClick={() => alert("oi")}>Processar</MDBBtn>
                                             <MDBBtn className="ml-2 btn-md" color="primary" onClick={async () => await requisicaoPacientes('GET', paciente._id)}>Editar</MDBBtn>
                                             <MDBBtn className="ml-2 btn-md" color="danger" onClick={()=>setExibicaoModal(true)}>Excluir</MDBBtn>
                                         </td>

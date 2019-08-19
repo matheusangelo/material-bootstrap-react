@@ -9,6 +9,7 @@ import Footer from './components/footer/Footer';
 import Login from './components/login/login'
 import Home from './components/home/Home'
 import CadastroLogin from './components/login/novo-login';
+import { verificarAcessoPorPerfil } from './components/login/index'
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
         <div className="App">
           <div className="main-container mb-5" style={{ "align": "center" }}>
             <Switch>
+              {verificarAcessoPorPerfil() ? true : <h3 className="autorizacao">401 - Não Autorizado</h3>}
               <Route path="/" exact component={Login} />
               <Route path="/novo" exact component={CadastroLogin} />
               <Route path="/convencional/home" exact component={Home} />
@@ -28,6 +30,7 @@ class App extends Component {
               <Route path="/convencional/consulta" exact component={ConsultaPaciente} />
               <Route path="/convencional/prontuario" exact component={Prontuario} />
               <Route path="/convencional/resultados" exact component={Resultados} />
+              <Route path="*" component={() => <h3 className="autorizacao">404 - Page not found</h3>} />
             </Switch>
           </div>
         </div>
