@@ -1,71 +1,32 @@
-import React, { Component } from 'react';
-import {Table } from 'reactstrap';
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
-import { URL_BASE } from '../../include/base'
+import React, { Component, useEffect, useState } from 'react';
+import { Table, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { MDBContainer, MDBBtn } from 'mdbreact';
+import requisicaoPacientes from './index'
+import { Card, CardBody, CardHeader } from 'reactstrap'
+
 import NavBarTopo from '../navbar/navbarAdmin'
 
 
-class ConsultaPaciente extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            titulo: "Pacientes",
-            valor: 0,
-            data: [],
-            pacientes: [],
-        }
-    }
+export default function ConsultaPaciente() {
+    const [pacientes, setPacientes] = useState([])
+    const [exibicaoModal, setExibicaoModal] = useState(false)
 
-    deletar = () => {
-        this.setState({ titulo: "oi" });
-    };
+    useEffect(async () => {
+        setPacientes(await requisicaoPacientes('GET'));
+    }, [])
 
-    processarProntuario = () => {
-        alert("Implementar treinamento da rede")
-    }
-
-    componentDidMount() {
-        try {
-            let url = URL_BASE + "/v1/pacientes";
-            const DADOS_INDEX = 0;
-            fetch(url + '/', { method: 'GET', mode: 'cors' }).then((resultado) => {
-                resultado.json().then((dados) => {
-                    console.log(dados)
-                    let retornos = [];
-                    for (let i = 0; i < dados[DADOS_INDEX].length; i++) {
-                        retornos.push({
-                            id: dados[DADOS_INDEX][i]._id,
-                            nome: dados[DADOS_INDEX][i].nome,
-                            idade: dados[DADOS_INDEX][i].idade,
-                            prioridade: dados[DADOS_INDEX][i].prioridade,
-                            status: dados[DADOS_INDEX][i].status
-                        })
-                        this.setState({
-                            pacientes: retornos
-                        });
-                    }
-                })
-            })
-        }
-        catch (e) {
-            console.log(e)
-        }
-    }
-
-
-    render() {
-        return (
-            <div>
-                <NavBarTopo/>
-                <MDBContainer fluid >
-                    <div className="mt-3">
-                        <h3> {this.state.titulo} </h3>
-                    </div>
-                    <hr className="my-2" />
-                    <Table bordered className="mt-5">
-                        <thead className="thead-dark">
+    return (
+        <div>
+            <NavBarTopo />
+            <MDBContainer fluid className="mt-5" >
+                <Card className="text-white mt-2">
+                    <CardHeader className=" bg-primary">
+                        Pacientes
+                    </CardHeader>
+                    <Table bordered striped>
+                        <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>#</th>
                                 <th>Nome</th>
                                 <th>Idade</th>
                                 <th>Prioridade</th>
@@ -74,7 +35,7 @@ class ConsultaPaciente extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.pacientes.map((paciente, i) => {
+                            {pacientes.map((paciente, i) => {
                                 return (
                                     <tr>
                                         <td>{i}</td>
@@ -83,19 +44,27 @@ class ConsultaPaciente extends Component {
                                         <td>{paciente.prioridade}</td>
                                         <td>{paciente.status}</td>
                                         <td>
-                                            <MDBBtn color="success" onClick={this.processarProntuario}>Processar</MDBBtn>
-                                            <MDBBtn className="ml-2" color="primary" onClick={this.processarProntuario}>Editar</MDBBtn>
-                                            <MDBBtn className="ml-2" color="danger" onClick={this.processarProntuario}>Excluir</MDBBtn>
+                                            <MDBBtn color="success" onClick={() => alert("oi")}>Processar</MDBBtn>
+                                            <MDBBtn className="ml-2" color="primary" onClick={async () => await requisicaoPacientes('GET', paciente._id)}>Editar</MDBBtn>
+                                            <MDBBtn className="ml-2" color="danger" onClick={()=>setExibicaoModal(true)}>Excluir</MDBBtn>
                                         </td>
                                     </tr>
                                 )
                             })}
                         </tbody>
                     </Table>
-                </MDBContainer>
-            </div>
-        )
-    }
-
+                </Card>
+            </MDBContainer>
+            <Modal isOpen={exibicaoModal} toggle={exibicaoModal} className={"danger"}>
+                <ModalHeader toggle={exibicaoModal}>Exclusão paciente</ModalHeader>
+                <ModalBody>
+                    Deseja realizar a exclusão do paciente ?
+                </ModalBody>
+                <ModalFooter>
+                    <MDBBtn color="danger" onClick={async () => await requisicaoPacientes('DELETE')}>Excluir</MDBBtn>{' '}
+                    <MDBBtn color="primary" onClick={()=>setExibicaoModal(false)}>Cancelar</MDBBtn>
+                </ModalFooter>
+            </Modal>
+        </div>
+    )
 }
-export default ConsultaPaciente;

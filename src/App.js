@@ -13,23 +13,28 @@ import CadastroLogin from './components/login/novo-login';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="main-container" style={{ "align": "center" }}>
-          <Switch>
-            <Route path="/" exact component={Login} />
-            <Route path="/novo" exact component={CadastroLogin} />
-            <Route path="/home" exact component={Home} />
-            <Route path="/master/consulta" exact component={ConsultaPaciente} />
-            <Route path="/master/prontuario" exact component={Prontuario} />
-            <Route path="/master/resultados" exact component={Resultados} />
-            <Route path="/master/doencas" exact component={CadastroDoencas} />
-            <Route path="/convencional/consulta" exact component={ConsultaPaciente} />
-            <Route path="/convencional/prontuario" exact component={Prontuario} />
-            <Route path="/convencional/resultados" exact component={Resultados} />
-          </Switch>
+      <>
+        <div className="App">
+          <div className="main-container mb-5" style={{ "align": "center" }}>
+            <Switch>
+              <Route path="/" exact component={Login} />
+              <Route path="/novo" exact component={CadastroLogin} />
+              <Route path="/convencional/home" exact component={Home} />
+              <Route path="/master/home" exact component={Home} />
+              <Route path="/master/consulta" exact component={ConsultaPaciente} />
+              <Route path="/master/prontuario" exact component={Prontuario} />
+              <Route path="/master/resultados" exact component={Resultados} />
+              <Route path="/master/doencas" exact component={CadastroDoencas} />
+              <Route path="/convencional/consulta" exact component={ConsultaPaciente} />
+              <Route path="/convencional/prontuario" exact component={Prontuario} />
+              <Route path="/convencional/resultados" exact component={Resultados} />
+            </Switch>
+          </div>
         </div>
-        <Footer />
-      </div>
+        <div className="footer text-center">
+          <Footer />
+        </div>
+      </>
     );
   }
 }

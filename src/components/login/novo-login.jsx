@@ -70,9 +70,8 @@ export default function CadastroLogin() {
                                         Profile                                        
                                         <select className="form-control">
                                             <option>Select....</option>
-                                            <option value="1">Option 1</option>
-                                            <option value="2">Option 2</option>
-                                            <option value="3">Option 3</option>
+                                            <option value="1">Especialista</option>
+                                            <option value="2">Convencional</option>
                                         </select>
                                         <hr />
                                         <div className="text-center">
