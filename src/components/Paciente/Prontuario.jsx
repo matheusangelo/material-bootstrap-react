@@ -205,6 +205,12 @@ export default function Prontuario() {
                         </Card>
                     </Col>
                 </Row>
+                <Row className="text-right mt-3">
+                    <Col>
+                        <Button color="danger" className="mb-3" onClick={() => setSintomas()}>Voltar</Button>
+                        <Button color="primary" className="mb-3" onClick={() => setSintomas()}>Finalizar cadastro</Button>
+                    </Col>
+                </Row>
             </Container>
         </div>
 
