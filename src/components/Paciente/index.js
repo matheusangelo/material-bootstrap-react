@@ -12,8 +12,12 @@ export default async function requisicaoPacientes(method, id) {
         let busca = await fetch(url, { method: method, mode: 'cors' });
         let retorno = await busca.json();
 
-        if (method == "GET") {
+        if (method == 'GET') {
             return retorno[0];
+        }
+
+        if (method == 'DELETE') {
+            return false;
         }
 
     } catch (e) {

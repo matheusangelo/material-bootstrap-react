@@ -10,10 +10,21 @@ import NavBarTopo from '../navbar/navbarAdmin'
 export default function ConsultaPaciente() {
     const [pacientes, setPacientes] = useState([])
     const [exibicaoModal, setExibicaoModal] = useState(false)
+    const [idExclusao, setIdExclusao] = useState("")
+
+    useEffect(async () => {
+        setExibicaoModal(false);
+        setPacientes(await requisicaoPacientes('GET'));
+    }, [])
 
     useEffect(async () => {
         setPacientes(await requisicaoPacientes('GET'));
-    }, [])
+    }, [exibicaoModal])
+
+    function toggleExclusao(id){
+        setIdExclusao(id);
+        setExibicaoModal(true);
+    }
 
     return (
         <div>
@@ -23,7 +34,7 @@ export default function ConsultaPaciente() {
                     <CardHeader className=" bg-primary">
                         Pacientes
                     </CardHeader>
-                    <Table bordered striped hover  responsive className="table-responsive-md btn-table">
+                    <Table bordered striped hover responsive className="table-responsive-md btn-table">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -46,7 +57,7 @@ export default function ConsultaPaciente() {
                                         <td>
                                             <MDBBtn className="btn btn-indigo btn-md m-0" onClick={() => alert("oi")}>Processar</MDBBtn>
                                             <MDBBtn className="ml-2 btn-md" color="primary" onClick={async () => await requisicaoPacientes('GET', paciente._id)}>Editar</MDBBtn>
-                                            <MDBBtn className="ml-2 btn-md" color="danger" onClick={()=>setExibicaoModal(true)}>Excluir</MDBBtn>
+                                            <MDBBtn className="ml-2 btn-md" color="danger" onClick={()=>toggleExclusao(paciente._id)}>Excluir</MDBBtn>
                                         </td>
                                     </tr>
                                 )
@@ -61,7 +72,7 @@ export default function ConsultaPaciente() {
                     Deseja realizar a exclusão do paciente ?
                 </ModalBody>
                 <ModalFooter>
-                    <MDBBtn color="danger" onClick={async () => await requisicaoPacientes('DELETE')}>Excluir</MDBBtn>{' '}
+                    <MDBBtn color="danger" onClick={async () => setExibicaoModal(await requisicaoPacientes('DELETE', idExclusao))}>Excluir</MDBBtn>{' '}
                     <MDBBtn color="primary" onClick={()=>setExibicaoModal(false)}>Cancelar</MDBBtn>
                 </ModalFooter>
             </Modal>
