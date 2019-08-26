@@ -24,3 +24,22 @@ export default async function requisicaoPacientes(method, id) {
         console.log(e)
     }
 }
+
+
+export function gerenciarSintomas(index, sintoma, intensidade, array = [], adicionar = true) {
+    console.log(index)
+    if (!adicionar) {
+        let exclusao = array.splice(index, 1)
+
+        return array.filter((x) => x != exclusao)
+    }
+
+    let novo_registro = {
+        "sintoma": sintoma,
+        "intensidade": intensidade
+    }
+
+    array.push(novo_registro)
+
+    return array
+}

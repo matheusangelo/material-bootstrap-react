@@ -2,7 +2,7 @@ import React, { Component, useEffect, useState } from 'react';
 import { Container, Col, Row, Button, Card, CardBody, CardHeader, Table } from 'reactstrap';
 import { MDBInput } from 'mdbreact';
 import { IoIosClose } from 'react-icons/io';
-import requisicaoPacientes from './index'
+import requisicaoPacientes, { gerenciarSintomas } from './index'
 import NavBarTopo from '../navbar/navbarAdmin';
 
 
@@ -15,10 +15,16 @@ export default function Prontuario() {
     const [prioridade, setPrioridade] = useState('')
     const [status, setStatus] = useState(false)
     const [paciente, setPaciente] = useState('')
-    const [sintomas, setSintomas] = useState('')
+    const [sintoma, setSintoma] = useState('')
+    const [sintomas, setSintomas] = useState([])
 
     useEffect(() => {
+
     }, [])
+
+    function callbackSintomas() {
+        setSintomas(gerenciarSintomas(0, sintoma, intensidade, sintomas))
+    }
 
     return (
         <div>
@@ -157,7 +163,7 @@ export default function Prontuario() {
                                 <Row className="mt-4">
                                     <Col xs="9">
                                         Sintomas:
-                                        <select class="browser-default custom-select">
+                                        <select class="browser-default custom-select" value={sintoma} onChange={(e) => setSintoma(e.target.value)}>
                                             <option selected>Selecione...</option>
                                             <option value="1">Inserir map das sintomas</option>
                                         </select>
@@ -178,25 +184,36 @@ export default function Prontuario() {
                                 </Row>
                                 <Row className="text-right mt-3">
                                     <Col>
-                                        <Button color="primary" className="mb-3" onClick={() => setSintomas()}>Cadastrar</Button>
+                                        <Button color="primary" className="mb-3" onClick={() => callbackSintomas()}>Cadastrar</Button>
                                     </Col>
                                 </Row>
                                 <Row className="mt-5">
                                     <Col>
-                                        <Table bordered>
+                                        <Table bordered className="text-center">
                                             <thead>
-                                                <tr>
+                                                <tr >
                                                     <th>Sintomas</th>
                                                     <th>Intensidade</th>
                                                     <th>Ação</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>Dor no olhos</td>
-                                                    <td>5</td>
-                                                    <td><h3><IoIosClose color="red" /></h3></td>
-                                                </tr>
+                                                {sintomas.map((sintoma, i) => {
+                                                    return (
+                                                        <tr>
+                                                            <td>{sintoma.sintoma}</td>
+                                                            <td>{sintoma.intensidade}</td>
+                                                            <td><h3>
+                                                                <IoIosClose color="red" onClick={() => setSintomas(
+                                                                    gerenciarSintomas(i,
+                                                                        sintoma.sintoma,
+                                                                        sintoma.intensidade,
+                                                                        sintomas,
+                                                                        false))} />
+                                                            </h3></td>
+                                                        </tr>
+                                                    )
+                                                })}
                                             </tbody>
                                         </Table>
                                     </Col>

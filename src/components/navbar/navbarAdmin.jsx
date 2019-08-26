@@ -41,7 +41,7 @@ class NavbarTopo extends Component {
                                 </MDBDropdownToggle>
                                 <MDBDropdownMenu>
                                     <MDBDropdownItem href="/master/doencas">Doenças</MDBDropdownItem>
-                                    <MDBDropdownItem href="/master/prontuario">Prontuário</MDBDropdownItem>
+                                    <MDBDropdownItem href="/master/prontuario">Pacientes</MDBDropdownItem>
                                 </MDBDropdownMenu>
                             </MDBDropdown>
                         </MDBNavItem>
