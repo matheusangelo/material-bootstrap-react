@@ -13,7 +13,7 @@ export default async function requisicaoPacientes(method, id) {
         let retorno = await busca.json();
 
         if (method == 'GET') {
-            return retorno[0];
+            return retorno;
         }
 
         if (method == 'DELETE') {
@@ -25,6 +25,11 @@ export default async function requisicaoPacientes(method, id) {
     }
 }
 
+export function retornarNãoProcessados(pacientes) {
+    let retorno_filto = pacientes.filter((x) => x.status == "Não Processado");
+    
+    return retorno_filto.lenght;
+}
 
 export function gerenciarSintomas(index, sintoma, intensidade, array = [], adicionar = true) {
     console.log(index)

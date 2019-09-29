@@ -18,7 +18,7 @@ class NavbarTopo extends Component {
         return (
             <MDBNavbar color="indigo" dark expand="md">
                 <MDBNavbarBrand>
-                    <strong className="white-text">DiagnosticIA</strong>
+                    <strong className="white-text">DiagnostiIA</strong>
                 </MDBNavbarBrand>
                         </MDBNavbar>
         );
