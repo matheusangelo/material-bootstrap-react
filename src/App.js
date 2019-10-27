@@ -20,16 +20,11 @@ class App extends Component {
               {verificarAcessoPorPerfil() ? true : <h3 className="autorizacao">401 - Não Autorizado</h3>}
               <Route path="/" exact component={Login} />
               <Route path="/novo" exact component={CadastroLogin} />
-              <Route path="/convencional/home" exact component={Home} />
               <Route path="/master/home" exact component={Home} />
               <Route path="/master/consulta" exact component={ConsultaPaciente} />
               <Route path="/master/prontuario" exact component={Prontuario} />
               <Route path="/master/prontuario/:id" exact component={Prontuario} />
               <Route path="/master/resultados" exact component={Resultados} />
-              <Route path="/convencional/consulta" exact component={ConsultaPaciente} />
-              <Route path="/convencional/prontuario" exact component={Prontuario} />
-              <Route path="/convencional/prontuario/:id" exact component={Prontuario} />
-              <Route path="/convencional/resultados" exact component={Resultados} />
               <Route path="*" component={() => <h3 className="autorizacao">404 - Page not found</h3>} />
             </Switch>
           </div>

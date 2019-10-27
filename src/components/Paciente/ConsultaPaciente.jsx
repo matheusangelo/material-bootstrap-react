@@ -2,7 +2,8 @@ import React, { Component, useEffect, useState } from 'react';
 import { Table, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { MDBContainer, MDBBtn, MDBCol, MDBCardBody, MDBCardImage, MDBCard, MDBCardTitle, MDBCardText, MDBRow } from 'mdbreact';
 import requisicaoPacientes from './index'
-import {retornarNãoProcessados} from './index'
+import {retornarNãoProcessados} from './index';
+import {Link} from "react-router-dom";
 import { Card, CardBody, CardHeader } from 'reactstrap'
 
 import NavBarTopo from '../navbar/navbarAdmin'
@@ -29,6 +30,11 @@ export default function ConsultaPaciente() {
         setExibicaoModal(true);
     }
 
+    // function redirectEditar(id){
+        
+    //     async () => await requisicaoPacientes('GET', paciente._id)
+    // }
+
     return (
         <>
             <div>
@@ -44,7 +50,6 @@ export default function ConsultaPaciente() {
                                     <th>#</th>
                                     <th>Nome</th>
                                     <th>Idade</th>
-                                    <th>Prioridade</th>
                                     <th>Status</th>
                                     <th>Ação</th>
                                 </tr>
@@ -56,11 +61,10 @@ export default function ConsultaPaciente() {
                                             <td>{i}</td>
                                             <td>{paciente.nome}</td>
                                             <td>{paciente.idade}</td>
-                                            <td>{paciente.prioridade}</td>
-                                            <td>{paciente.status}</td>
+                                            <td>{paciente.status == false ? "Processado" : "Não Processado"}</td>
                                             <td>
                                                 <MDBBtn className="btn btn-indigo btn-md m-0" onClick={() => alert("oi")}>Processar</MDBBtn>
-                                                <MDBBtn className="ml-2 btn-md" color="primary" onClick={async () => await requisicaoPacientes('GET', paciente._id)}>Editar</MDBBtn>
+                                                <Link className="btn btn-primary btn-md ml-2"  to={"/master/prontuario/" + paciente._id} > Editar</Link>
                                                 <MDBBtn className="ml-2 btn-md" color="danger" onClick={() => toggleExclusao(paciente._id)}>Excluir</MDBBtn>
                                             </td>
                                         </tr>

@@ -1,12 +1,12 @@
 import React, { Component, useEffect, useState } from 'react';
 import { Container, Col, Row, Button, Card, CardBody, CardHeader, Table } from 'reactstrap';
 import { MDBInput } from 'mdbreact';
-import requisicaoPacientes, { gerenciarSintomas, finalizarCadastro, chaves } from './index'
+import requisicaoPacientes, { gerenciarSintomas, finalizarCadastro, value } from './index'
 import NavBarTopo from '../navbar/navbarAdmin';
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom';
+import Inputs from './Inputs'
 
-
-export default function Prontuario() {
+export default function Prontuario(props) {
     const [nome, setNome] = useState('')
     const [sexo, setSexo] = useState('')
     const [idade, setIdade] = useState('')
@@ -16,25 +16,17 @@ export default function Prontuario() {
     const [valor, setValor] = useState('')
     const [chave, setChave] = useState('')
     const [sintomas, setSintomas] = useState([])
+    const [prontuario, setProntuario] = useState(value);
 
     useEffect(() => {
-
+        (async () => {
+            let { id } = props.match.params;
+            if (id) { setProntuario(await requisicaoPacientes('GET', id)) }
+        })();
     }, [])
 
-    function callbackSintomas() {
-        setSintomas(gerenciarSintomas(0, chave, valor, sintomas))
-    }
-
     function sendPropsToSave() {
-        finalizarCadastro(
-            nome,
-            sexo,
-            idade,
-            rg,
-            cpf,
-            identificador,
-            sintomas
-        );
+        finalizarCadastro(prontuario);
     }
 
 
@@ -59,8 +51,8 @@ export default function Prontuario() {
                                 <Row className="mt-2">
                                     <Col xs="10">
                                         <MDBInput
-                                            value={nome}
-                                            onChange={(e) => setNome(e.target.value)}
+                                            value={prontuario.nome}
+                                            onChange={(e) => prontuario.nome = e.target.value}
                                             label="Nome do paciente"
                                             group
                                             type="email"
@@ -72,8 +64,8 @@ export default function Prontuario() {
                                     </Col>
                                     <Col xs="2">
                                         <MDBInput
-                                            value={idade}
-                                            onChange={(e) => setIdade(e.target.value)}
+                                            value={prontuario.idade}
+                                            onChange={(e) => prontuario.idade = e.target.value}
                                             label="Idade"
                                             group
                                             type="number"
@@ -87,11 +79,11 @@ export default function Prontuario() {
                                 <Row className="mt-8">
                                     <Col xs="6">
                                         <MDBInput
-                                            value={rg}
-                                            onChange={(e) => setRG(e.target.value)}
+                                            value={prontuario.rg}
+                                            onChange={(e) => prontuario.rg = e.target.value}
                                             label="RG"
                                             group
-                                            type="number"
+                                            type="text"
                                             validate
                                             error="wrong"
                                             success="right"
@@ -100,11 +92,11 @@ export default function Prontuario() {
                                     </Col>
                                     <Col xs="6">
                                         <MDBInput
-                                            value={cpf}
-                                            onChange={(e) => setCPF(e.target.value)}
+                                            value={prontuario.cpf}
+                                            onChange={(e) => prontuario.cpf = e.target.value}
                                             label="CPF"
                                             group
-                                            type="number"
+                                            type="text"
                                             validate
                                             error="wrong"
                                             success="right"
@@ -116,8 +108,8 @@ export default function Prontuario() {
                                     <Col xs="6">
                                         Sexo:
                                         <select class="browser-default custom-select"
-                                            value={sexo}
-                                            onChange={(e) => setSexo(e.target.value)}>
+                                            value={prontuario.sexo}
+                                            onChange={(e) => prontuario.sexo = e.target.value}>
                                             <option selected>Selecione...</option>
                                             <option value="1">Masculino</option>
                                             <option value="2">Feminino</option>
@@ -125,8 +117,8 @@ export default function Prontuario() {
                                     </Col>
                                     <Col xs="4">
                                         <MDBInput
-                                            value={identificador}
-                                            onChange={(e) => setIdentificador(e.target.value)}
+                                            value={prontuario.identificador}
+                                            onChange={(e) => prontuario.identificador = e.target.value}
                                             label="Identificador"
                                             group
                                             type="text"
@@ -138,11 +130,11 @@ export default function Prontuario() {
                                     </Col>
                                     <Col xs="2">
                                         <MDBInput
-                                            value={idade}
-                                            onChange={(e) => setIdade(e.target.value)}
+                                            value={prontuario.data_atendimento}
+                                            onChange={(e) => prontuario.data_atendimento = e.target.value}
                                             label="Data atendimento"
                                             group
-                                            type="date"
+                                            type="text"
                                             validate
                                             error="wrong"
                                             success="right"
@@ -155,6 +147,8 @@ export default function Prontuario() {
                                         <div class="form-group shadow-textarea">
                                             <label for="exampleFormControlTextarea6">Observações:</label>
                                             <textarea
+                                                value={prontuario.observacoes}
+                                                onChange={(e) => { { prontuario.observacoes = e.target.value } }}
                                                 class="form-control z-depth-1"
                                                 id="exampleFormControlTextarea6"
                                                 rows="3"
@@ -175,23 +169,7 @@ export default function Prontuario() {
                             <CardBody className="bordered">
                                 <Row className="mt-4">
                                     <Col xs="12">
-                                        {
-                                            chaves.map((chave, i) => {
-                                                return (
-                                                    <MDBInput
-                                                        value={chave}
-                                                        onChange={(e) => setIdade(e.target.value)}
-                                                        label={chave}
-                                                        group
-                                                        type="text"
-                                                        validate
-                                                        error="wrong"
-                                                        success="right"
-                                                        containerClass="text-left"
-                                                    />
-                                                );
-                                            })
-                                        }
+                                        <Inputs  inputs={prontuario.inputs}/>
                                     </Col>
                                 </Row>
                             </CardBody>
