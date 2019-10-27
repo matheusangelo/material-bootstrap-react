@@ -1,5 +1,5 @@
 import { URL_PACIENTES } from '../../include/base';
-
+import React from 'react'
 export default async function requisicaoPacientes(method, id) {
 
     let url = URL_PACIENTES;
@@ -50,72 +50,18 @@ export function gerenciarSintomas(index, sintoma, intensidade, array = [], adici
     return array
 }
 
-export const finalizarCadastro = async (
-    nome,
-    sexo,
-    idade,
-    rg,
-    cpf,
-    identificador,
-    sintomas) => {
+export const finalizarCadastro = async (prontuario, id) => {
+    if (id) {
+        let requisicao = await fetch(URL_PACIENTES + "/criar", prontuario, { method: "PUT", mode: 'cors' });
+        let retorno = await requisicao.json();
 
-
-    let json = {
-        nome: nome,
-        sexo: sexo,
-        idade: idade,
-        rg: rg,
-        cpf: cpf,
-        identificador: identificador,
-        sintomas: sintomas
+    }
+    else {
+        // let requisicao = await fetch(URL_PACIENTES + "/criar", json, { method: "POST", mode: 'cors' });
+        // let retorno = await requisicao.json();
     }
 
-    let requisicao = await fetch(URL_PACIENTES + "/criar", json, { method: "POST", mode: 'cors' });
-    let retorno = await requisicao.json();
-
-    console.log(retorno)
+    console.log(prontuario, id)
 }
 
-export let value = {
-    "cpf": "",
-    "data_atendimento": "",
-    "idade": "",
-    "identificador": "",
-    "inputs": {
-        "value1": 0,
-        "value2": 0,
-        "value3": 0,
-        "value4": 0,
-        "value5": 0,
-        "value6": 0,
-        "value7": 0,
-        "value8": 0,
-        "value9": 0,
-        "value10": 0,
-        "value11": 0,
-        "value12": 0,
-        "value13": 0,
-        "value14": 0,
-        "value15": 0,
-        "value16": 0,
-        "value17": 0,
-        "value18": 0,
-        "value19": 0,
-        "value20": 0,
-        "value21": 0,
-        "value22": 0,
-        "value23": 0,
-        "value24": 0,
-        "value25": 0,
-        "value26": 0,
-        "value27": 0,
-        "value28": 0,
-        "value29": 0,
-        "value30": 0,
-    },
-    "nome": "",
-    "observacoes": "",
-    "rg": "",
-    "sexo": "",
-    "status": ""
-}
+export let Context = React.createContext({});
