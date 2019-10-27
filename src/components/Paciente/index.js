@@ -57,7 +57,7 @@ export const finalizarCadastro = async (prontuario, id) => {
         return true
     }
     else {
-        let requisicao = await fetch(URL_PACIENTES, prontuario, { method: "POST", mode: 'cors' });
+        let requisicao = await fetch(URL_PACIENTES + "/",{ method: "POST", mode: 'cors', body: JSON.stringify(prontuario)});
         let retorno = await requisicao.json();
         return true
     }

@@ -3,7 +3,7 @@ import { Container, Col, Row, Button, Card, CardBody, CardHeader, Table } from '
 import { MDBInput } from 'mdbreact';
 import requisicaoPacientes, { gerenciarSintomas, finalizarCadastro, Context } from './index'
 import NavBarTopo from '../navbar/navbarAdmin';
-import { Link, useParams } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Inputs from './Inputs'
 
 export default function Prontuario(props) {
@@ -20,6 +20,7 @@ export default function Prontuario(props) {
     const [data_atendimento, setData_atendimento] = useState('');
     const [observacoes, setObservacoes] = useState('');
     const [prontuario, setProntuario] = useState({});
+    const [redirect, setRedirect] = useState(false);
 
     //entradas Rede Neural
     const [input1, setInput1] = useState('');
@@ -91,30 +92,30 @@ export default function Prontuario(props) {
                 value8: input8,
                 value9: input9,
                 value10: input10,
-                value11:input11,
-                value12:input12,
-                value13:input13,
-                value14:input14,
-                value15:input15,
-                value16:input16,
-                value17:input17,
-                value18:input18,
-                value19:input19,
-                value20:input20,
-                value21:input21,
-                value22:input22,
-                value23:input23,
-                value24:input24,
-                value25:input25,
-                value26:input26,
-                value27:input27,
-                value28:input28,
-                value29:input29,
-                value30:input30
+                value11: input11,
+                value12: input12,
+                value13: input13,
+                value14: input14,
+                value15: input15,
+                value16: input16,
+                value17: input17,
+                value18: input18,
+                value19: input19,
+                value20: input20,
+                value21: input21,
+                value22: input22,
+                value23: input23,
+                value24: input24,
+                value25: input25,
+                value26: input26,
+                value27: input27,
+                value28: input28,
+                value29: input29,
+                value30: input30
 
             }
         }
-        finalizarCadastro(propeties, id);
+        setRedirect(finalizarCadastro(propeties, id));
     }
 
     function formatLabels(prontuario) {
@@ -167,9 +168,9 @@ export default function Prontuario(props) {
 
         }
     }
-
     return (
         <div>
+            {redirect ? <Redirect to="/master/consulta"/> : null}
             <NavBarTopo />
             <Container className="mt-2 card">
                 <Row className="mt-1">

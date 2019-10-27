@@ -1,136 +1,98 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Col, Row, Button, Card, CardBody, CardHeader, Table } from 'reactstrap';
 import NavBarTopo from '../navbar/navbarAdmin'
-import {pacientes,resultados} from './index'
+import requisicaoPacientes, { finalizarCadastro } from './index'
 
 
-class Resultados extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            resultados: resultados,
-            pacientes: pacientes,
-            exibir: false,
-        }
+export default function Resultados() {
+    const [exibir, setExibir] = useState(false);
+    const [pacientes, setPacientes] = useState([]);
+    const [paciente, setPacienteSelecionado] = useState([]);
+
+    useEffect(() => {
+        (async () => {
+            setPacientes(await requisicaoPacientes('GET'))
+        })()
+    }, [])
+
+    function handleChange(value) {
+        setExibir(false);
+        setPacienteSelecionado(pacientes.filter(x => x.nome == value));
     }
 
-    buscarResultado = () => {
-        this.setState({ exibir: true })
+    function buscarResultado() {
+        setExibir(true);
     }
 
-    get RetornarRelatorios() {
+    function RetornarRelatorios() {
         return (
-            <Row className="mt-5">
+            <Container className="mt-5">
                 <Col>
-                    <Card>
-                        <CardHeader className="text-left">
-                            <b>Resultados:</b>
-                        </CardHeader>
-                        <CardBody>
-                            <Row >
-                                <Col>
-                                    <Row className="text-left ml-2">Pytorch</Row>
-                                    <Row>
-                                        <Table className="striped">
-                                            <thead className="table-dark">
-                                                <tr>
-                                                    <th scope="col">ID</th>
-                                                    <th scope="col">Codigo</th>
-                                                    <th scope="col">Descrição</th>
-                                                    <th scope="col">Probabilidade</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {this.state.resultados.map((resultado, i) => {
-                                                    return (
-                                                        <tr>
-                                                            <td>{resultado.id}</td>
-                                                            <td>{resultado.codigo}</td>
-                                                            <td>{resultado.descricao}</td>
-                                                            <td>{resultado.probabilidade}%</td>
-                                                        </tr>
-                                                    )
-                                                })}
-                                            </tbody>
-                                        </Table>
-                                    </Row>
-                                </Col>
-                            </Row>
-                            <Row >
-                                <Col>
-                                    <Row className="text-left ml-2">TensorFlow</Row>
-                                    <Row>
-                                        <Table className="striped">
-                                            <thead className="table-dark">
-                                                <tr>
-                                                    <th scope="col">ID</th>
-                                                    <th scope="col">Codigo</th>
-                                                    <th scope="col">Descrição</th>
-                                                    <th scope="col">Probabilidade</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {this.state.resultados.map((resultado, i) => {
-                                                    return (
-                                                        <tr>
-                                                            <td>{resultado.id}</td>
-                                                            <td>{resultado.codigo}</td>
-                                                            <td>{resultado.descricao}</td>
-                                                            <td>{resultado.probabilidade}%</td>
-                                                        </tr>
-                                                    )
-                                                })}
-                                            </tbody>
-                                        </Table>
-                                    </Row>
-                                </Col>
-                            </Row>
-                        </CardBody>
-                    </Card>
-                </Col>
-            </Row>
-        )
-    }
-
-    render() {
-        return (
-            <>
-                <NavBarTopo />
-                <Container>
-                    <Row className="mt-5">
+                    <Row >
                         <Col>
-                            <Card className="text-white mt-2">
-                                <CardHeader className="text-left bg-primary">
-                                    <b>Consulta:</b>
-                                </CardHeader>
-                                <CardBody>
-                                    <Row className="text-left">
-                                        <Col>
-                                            Pacientes:
-                                        <select className="form-control mt-2">
-                                                <option>Selecione...</option>
-                                                {this.state.pacientes.map((paciente, i) => {
-                                                    return (
-                                                        <option>{paciente.nome}</option>
-                                                    )
-                                                })}
-                                            </select>
-                                        </Col>
-                                    </Row>
-                                    <Row className="text-right mt-2">
-                                        <Col>
-                                            <Button onClick={this.buscarResultado}>Buscar</Button>
-                                        </Col>
-                                    </Row>
-                                </CardBody>
-                            </Card>
+                            <Row>
+                                <Table className="striped text-center">
+                                    <thead className="table-primary">
+                                        <tr>
+                                            <th scope="col">Descrição</th>
+                                            <th scope="col">Classificação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {paciente.map((resultado, i) => {
+                                            return (
+                                                <tr>
+                                                    <td>{resultado.nome}</td>
+                                                    <td>{resultado.status == false ? resultado.resultado : "Os dados ainda não foram processados"}</td>
+                                                </tr>
+                                            )
+                                        })}
+                                    </tbody>
+                                </Table>
+                            </Row>
                         </Col>
                     </Row>
-                    {this.state.exibir === true ? this.RetornarRelatorios : false}
-                </Container>
-            </>
+                </Col>
+            </Container>
         )
     }
 
+    return (
+        <>
+            <NavBarTopo />
+            <Container>
+                <Row className="mt-5">
+                    <Col>
+                        <Card className="text-white mt-2">
+                            <CardHeader className="text-left bg-primary">
+                                <b>Consulta:</b>
+                            </CardHeader>
+                            <CardBody>
+                                <Row className="text-left">
+                                    <Col>
+                                        Pacientes:
+                                        <select className="form-control mt-2" onClick={(e) => { handleChange(e.target.value) }}>
+                                            <option>Selecione...</option>
+                                            {pacientes.map((paciente, i) => {
+                                                return (
+                                                    <option value={paciente.id}>{paciente.nome}</option>
+                                                )
+                                            })}
+                                        </select>
+                                    </Col>
+                                </Row>
+                                <Row className="text-right mt-2">
+                                    <Col>
+                                        <Button onClick={() => { buscarResultado() }}>Buscar</Button>
+                                    </Col>
+                                </Row>
+                            </CardBody>
+                        </Card>
+                    </Col>
+                </Row>
+                {exibir === true ? RetornarRelatorios() : false}
+            </Container>
+        </>
+    )
+
 }
-export default Resultados;
