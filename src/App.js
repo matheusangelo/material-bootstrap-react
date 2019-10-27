@@ -4,7 +4,6 @@ import { Switch, Route } from 'react-router-dom';
 import Prontuario from './components/paciente/Prontuario';
 import ConsultaPaciente from './components/paciente/ConsultaPaciente';
 import Resultados from './components/resultados/Resultados';
-import CadastroDoencas from './components/doencas/CadastroDoencas'
 import Footer from './components/footer/Footer';
 import Login from './components/login/login'
 import Home from './components/home/Home'
@@ -27,7 +26,6 @@ class App extends Component {
               <Route path="/master/prontuario" exact component={Prontuario} />
               <Route path="/master/prontuario/:id" exact component={Prontuario} />
               <Route path="/master/resultados" exact component={Resultados} />
-              <Route path="/master/doencas" exact component={CadastroDoencas} />
               <Route path="/convencional/consulta" exact component={ConsultaPaciente} />
               <Route path="/convencional/prontuario" exact component={Prontuario} />
               <Route path="/convencional/prontuario/:id" exact component={Prontuario} />

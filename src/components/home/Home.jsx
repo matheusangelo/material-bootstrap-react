@@ -17,7 +17,7 @@ class Home extends Component {
                 <NavBarTopo/>
                 <Jumbotron>
                     <h1 className="display-3">Bem-vindo!</h1>
-                    <p className="lead">Utilização de Machine Learning em diagnótiscos de doenças oculares.</p>
+                    <p className="lead">Utilização de Machine Learning na categorização do câncer de mama.</p>
                     <hr className="my-2" />
                     <p>Trabalho de conclusão de curso - 2019</p>
                     <p className="lead">

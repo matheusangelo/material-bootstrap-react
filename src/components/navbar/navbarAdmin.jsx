@@ -18,7 +18,7 @@ class NavbarTopo extends Component {
         return (
             <MDBNavbar color="indigo" dark expand="md">
                 <MDBNavbarBrand>
-                    <strong className="white-text">DiagnostiIA</strong>
+                    <strong className="white-text">DiagnostIA</strong>
                 </MDBNavbarBrand>
                 <MDBNavbarToggler onClick={this.toggleCollapse} />
                 <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
@@ -40,7 +40,6 @@ class NavbarTopo extends Component {
                                     <span className="mr-2">Cadastro</span>
                                 </MDBDropdownToggle>
                                 <MDBDropdownMenu>
-                                    <MDBDropdownItem href="/master/doencas">Doenças</MDBDropdownItem>
                                     <MDBDropdownItem href="/master/prontuario">Pacientes</MDBDropdownItem>
                                 </MDBDropdownMenu>
                             </MDBDropdown>

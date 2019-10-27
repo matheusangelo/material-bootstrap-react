@@ -33,41 +33,6 @@ export default function ConsultaPaciente() {
         <>
             <div>
                 <NavBarTopo />
-                <div className="mt-3 ml-3 mr-3">
-                    <MDBRow>
-                        <MDBCol>
-                            <MDBCard className=" bg-danger">
-                                <MDBCardBody>
-                                    <MDBCardTitle className="text-white">Não Processados</MDBCardTitle>
-                                    <MDBCardText className="text-white">
-                                        {naoProcessados}
-                                    </MDBCardText>
-                                </MDBCardBody>
-                            </MDBCard>
-                        </MDBCol>
-                        <MDBCol>
-                            <MDBCard className=" bg-primary">
-                                <MDBCardBody className="text-white">
-                                    <MDBCardTitle>Totais</MDBCardTitle>
-                                    <MDBCardText className="text-white">
-                                    {naoProcessados}
-                                    </MDBCardText>
-                                </MDBCardBody>
-                            </MDBCard>
-                        </MDBCol>
-                        <MDBCol>
-                            <MDBCard className=" bg-success">
-                                <MDBCardBody>
-                                    <MDBCardTitle className="text-white">  Atendimento</MDBCardTitle>
-                                    <MDBCardText className="text-white">
-                                    {naoProcessados}
-                                    </MDBCardText>
-                                </MDBCardBody>
-                            </MDBCard>
-                        </MDBCol>
-                    </MDBRow>
-
-                </div>
                 <MDBContainer fluid className="mt-5" >
                     <Card className="text-white mt-2">
                         <CardHeader className=" bg-primary">

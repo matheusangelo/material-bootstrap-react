@@ -99,8 +99,8 @@ class Resultados extends Component {
                 <Container>
                     <Row className="mt-5">
                         <Col>
-                            <Card>
-                                <CardHeader className="text-left">
+                            <Card className="text-white mt-2">
+                                <CardHeader className="text-left bg-primary">
                                     <b>Consulta:</b>
                                 </CardHeader>
                                 <CardBody>

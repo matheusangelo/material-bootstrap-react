@@ -49,7 +49,7 @@ export default function Login() {
                                         <hr />
                                         <div className="text-center">
                                             <Button type="submit" className="login-btn mb-4" color="primary">Entrar</Button>
-                                            <Link to="/novo" type="button" className="btn btn-danger login-btn mb-4">Cadastrar-se</Link>
+                                            <Link to="/novo" type="button" className="btn btn-danger login-btn mb-4">Cadastrar</Link>
                                         </div>
                                     </MDBCardBody>
                                 </MDBCard>

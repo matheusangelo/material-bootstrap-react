@@ -27,7 +27,7 @@ export default async function requisicaoPacientes(method, id) {
 
 export function retornarNãoProcessados(pacientes) {
     let retorno_filto = pacientes.filter((x) => x.status == "Não Processado");
-    
+
     return retorno_filto.lenght;
 }
 
@@ -48,3 +48,63 @@ export function gerenciarSintomas(index, sintoma, intensidade, array = [], adici
 
     return array
 }
+
+export const finalizarCadastro = async (
+    nome,
+    sexo,
+    idade,
+    rg,
+    cpf,
+    identificador,
+    sintomas) => {
+
+
+    let json = {
+        nome: nome,
+        sexo: sexo,
+        idade: idade,
+        rg: rg,
+        cpf: cpf,
+        identificador: identificador,
+        sintomas: sintomas
+    }
+
+    let requisicao = await fetch(URL_PACIENTES + "/criar", json, { method: "POST", mode: 'cors' });
+    let retorno = await requisicao.json();
+
+    console.log(retorno)
+}
+
+export const chaves = [
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+    "valor1",
+]

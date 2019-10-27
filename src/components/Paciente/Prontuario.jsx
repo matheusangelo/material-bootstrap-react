@@ -1,21 +1,20 @@
 import React, { Component, useEffect, useState } from 'react';
 import { Container, Col, Row, Button, Card, CardBody, CardHeader, Table } from 'reactstrap';
 import { MDBInput } from 'mdbreact';
-import { IoIosClose } from 'react-icons/io';
-import requisicaoPacientes, { gerenciarSintomas } from './index'
+import requisicaoPacientes, { gerenciarSintomas, finalizarCadastro, chaves } from './index'
 import NavBarTopo from '../navbar/navbarAdmin';
+import { Link } from 'react-router-dom'
 
 
 export default function Prontuario() {
     const [nome, setNome] = useState('')
     const [sexo, setSexo] = useState('')
     const [idade, setIdade] = useState('')
-    const [intensidade, setIntensidade] = useState('')
-    const [observacoes, setObservacoes] = useState('')
-    const [prioridade, setPrioridade] = useState('')
-    const [status, setStatus] = useState(false)
-    const [paciente, setPaciente] = useState('')
-    const [sintoma, setSintoma] = useState('')
+    const [rg, setRG] = useState('')
+    const [cpf, setCPF] = useState('')
+    const [identificador, setIdentificador] = useState('')
+    const [valor, setValor] = useState('')
+    const [chave, setChave] = useState('')
     const [sintomas, setSintomas] = useState([])
 
     useEffect(() => {
@@ -23,15 +22,27 @@ export default function Prontuario() {
     }, [])
 
     function callbackSintomas() {
-        setSintomas(gerenciarSintomas(0, sintoma, intensidade, sintomas))
+        setSintomas(gerenciarSintomas(0, chave, valor, sintomas))
     }
+
+    function sendPropsToSave() {
+        finalizarCadastro(
+            nome,
+            sexo,
+            idade,
+            rg,
+            cpf,
+            identificador,
+            sintomas
+        );
+    }
+
 
     return (
         <div>
             <NavBarTopo />
             <Container className="mt-2 card">
-                <Row className="mt-2">
-                    <Col><h5>Pacientes:</h5></Col>
+                <Row className="mt-1">
                     <div className="row justify-content-center">
                         <div className="col">
                             <hr className="divider" />
@@ -76,8 +87,8 @@ export default function Prontuario() {
                                 <Row className="mt-8">
                                     <Col xs="6">
                                         <MDBInput
-                                            value={idade}
-                                            onChange={(e) => setIdade(e.target.value)}
+                                            value={rg}
+                                            onChange={(e) => setRG(e.target.value)}
                                             label="RG"
                                             group
                                             type="number"
@@ -89,8 +100,8 @@ export default function Prontuario() {
                                     </Col>
                                     <Col xs="6">
                                         <MDBInput
-                                            value={idade}
-                                            onChange={(e) => setIdade(e.target.value)}
+                                            value={cpf}
+                                            onChange={(e) => setCPF(e.target.value)}
                                             label="CPF"
                                             group
                                             type="number"
@@ -104,7 +115,9 @@ export default function Prontuario() {
                                 <Row className="mt-8">
                                     <Col xs="6">
                                         Sexo:
-                                        <select class="browser-default custom-select">
+                                        <select class="browser-default custom-select"
+                                            value={sexo}
+                                            onChange={(e) => setSexo(e.target.value)}>
                                             <option selected>Selecione...</option>
                                             <option value="1">Masculino</option>
                                             <option value="2">Feminino</option>
@@ -112,8 +125,8 @@ export default function Prontuario() {
                                     </Col>
                                     <Col xs="4">
                                         <MDBInput
-                                            value={idade}
-                                            onChange={(e) => setIdade(e.target.value)}
+                                            value={identificador}
+                                            onChange={(e) => setIdentificador(e.target.value)}
                                             label="Identificador"
                                             group
                                             type="text"
@@ -161,61 +174,24 @@ export default function Prontuario() {
                             </CardHeader>
                             <CardBody className="bordered">
                                 <Row className="mt-4">
-                                    <Col xs="9">
-                                        Sintomas:
-                                        <select class="browser-default custom-select" value={sintoma} onChange={(e) => setSintoma(e.target.value)}>
-                                            <option selected>Selecione...</option>
-                                            <option value="1">Inserir map das sintomas</option>
-                                        </select>
-                                    </Col>
-                                    <Col xs="3">
-                                        <MDBInput
-                                            value={intensidade}
-                                            onChange={(e) => setIntensidade(e.target.value)}
-                                            label="Intensidade"
-                                            group
-                                            type="number"
-                                            validate
-                                            error="wrong"
-                                            success="right"
-                                            containerClass="text-left"
-                                        />
-                                    </Col>
-                                </Row>
-                                <Row className="text-right mt-3">
-                                    <Col>
-                                        <Button color="primary" className="mb-3" onClick={() => callbackSintomas()}>Cadastrar</Button>
-                                    </Col>
-                                </Row>
-                                <Row className="mt-5">
-                                    <Col>
-                                        <Table bordered className="text-center">
-                                            <thead>
-                                                <tr >
-                                                    <th>Sintomas</th>
-                                                    <th>Intensidade</th>
-                                                    <th>Ação</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {sintomas.map((sintoma, i) => {
-                                                    return (
-                                                        <tr>
-                                                            <td>{sintoma.sintoma}</td>
-                                                            <td>{sintoma.intensidade}</td>
-                                                            <td><h3>
-                                                                <IoIosClose color="red" onClick={() => setSintomas(
-                                                                    gerenciarSintomas(i,
-                                                                        sintoma.sintoma,
-                                                                        sintoma.intensidade,
-                                                                        sintomas,
-                                                                        false))} />
-                                                            </h3></td>
-                                                        </tr>
-                                                    )
-                                                })}
-                                            </tbody>
-                                        </Table>
+                                    <Col xs="12">
+                                        {
+                                            chaves.map((chave, i) => {
+                                                return (
+                                                    <MDBInput
+                                                        value={chave}
+                                                        onChange={(e) => setIdade(e.target.value)}
+                                                        label={chave}
+                                                        group
+                                                        type="text"
+                                                        validate
+                                                        error="wrong"
+                                                        success="right"
+                                                        containerClass="text-left"
+                                                    />
+                                                );
+                                            })
+                                        }
                                     </Col>
                                 </Row>
                             </CardBody>
@@ -224,8 +200,8 @@ export default function Prontuario() {
                 </Row>
                 <Row className="text-right mt-3">
                     <Col>
-                        <Button color="danger" className="mb-3" onClick={() => setSintomas()}>Voltar</Button>
-                        <Button color="primary" className="mb-3" onClick={() => setSintomas()}>Finalizar cadastro</Button>
+                        <Link to="/master/consulta" color="danger" className="btn btn-danger mb-3" onClick={() => setSintomas()}>Voltar</Link>
+                        <Button color="primary" className="mb-3" onClick={() => sendPropsToSave()}>Finalizar cadastro</Button>
                     </Col>
                 </Row>
             </Container>
