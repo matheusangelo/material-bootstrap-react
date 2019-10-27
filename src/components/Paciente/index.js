@@ -52,16 +52,15 @@ export function gerenciarSintomas(index, sintoma, intensidade, array = [], adici
 
 export const finalizarCadastro = async (prontuario, id) => {
     if (id) {
-        let requisicao = await fetch(URL_PACIENTES + "/criar", prontuario, { method: "PUT", mode: 'cors' });
+        let requisicao = await fetch(URL_PACIENTES + "/"+id, { method: "PUT", mode: 'cors', body:JSON.stringify(prontuario) });
         let retorno = await requisicao.json();
-
+        return true
     }
     else {
-        // let requisicao = await fetch(URL_PACIENTES + "/criar", json, { method: "POST", mode: 'cors' });
-        // let retorno = await requisicao.json();
+        let requisicao = await fetch(URL_PACIENTES, prontuario, { method: "POST", mode: 'cors' });
+        let retorno = await requisicao.json();
+        return true
     }
-
-    console.log(prontuario, id)
 }
 
 export let Context = React.createContext({});
