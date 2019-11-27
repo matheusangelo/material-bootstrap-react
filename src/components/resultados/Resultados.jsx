@@ -1,96 +1,138 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Col, Row, Button, Card, CardBody, CardHeader, Table } from 'reactstrap';
 import NavBarTopo from '../navbar/navbarAdmin'
-import requisicaoPacientes, { finalizarCadastro } from './index'
+import { Link } from 'react-router-dom';
 
-
-export default function Resultados() {
-    const [exibir, setExibir] = useState(false);
-    const [pacientes, setPacientes] = useState([]);
-    const [paciente, setPacienteSelecionado] = useState([]);
+export default function Resultados(props) {
+    const [nome, setNome] = useState('');
+    const [resultado, setResultado] = useState('');
 
     useEffect(() => {
-        (async () => {
-            setPacientes(await requisicaoPacientes('GET'))
-        })()
+        let { nome } = props.match.params;
+        let { resultado } = props.match.params;
+        setNome(nome);
+        setResultado(resultado);
     }, [])
-
-    function handleChange(value) {
-        setExibir(false);
-        setPacienteSelecionado(pacientes.filter(x => x.nome == value));
-    }
-
-    function buscarResultado() {
-        setExibir(true);
-    }
-
-    function RetornarRelatorios() {
-        return (
-            <Container className="mt-5">
-                <Col>
-                    <Row >
-                        <Col>
-                            <Row>
-                                <Table className="striped text-center">
-                                    <thead className="table-primary">
-                                        <tr>
-                                            <th scope="col">Descrição</th>
-                                            <th scope="col">Classificação</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {paciente.map((resultado, i) => {
-                                            return (
-                                                <tr>
-                                                    <td>{resultado.nome}</td>
-                                                    <td>{resultado.status == false ? resultado.resultado : "Os dados ainda não foram processados"}</td>
-                                                </tr>
-                                            )
-                                        })}
-                                    </tbody>
-                                </Table>
-                            </Row>
-                        </Col>
-                    </Row>
-                </Col>
-            </Container>
-        )
-    }
-
     return (
         <>
             <NavBarTopo />
-            <Container>
-                <Row className="mt-5">
+            <Container className="mt-5">
+                <Row>
                     <Col>
-                        <Card className="text-white mt-2">
-                            <CardHeader className="text-left bg-primary">
-                                <b>Consulta:</b>
+                        <Card>
+                            <CardHeader className=" bg-primary text-white">
+                                <b>Informações Gerais</b>
                             </CardHeader>
-                            <CardBody>
-                                <Row className="text-left">
+                            <CardBody className="bordered shadow">
+                                <Row>
                                     <Col>
-                                        Pacientes:
-                                        <select className="form-control mt-2" onClick={(e) => { handleChange(e.target.value) }}>
-                                            <option>Selecione...</option>
-                                            {pacientes.map((paciente, i) => {
-                                                return (
-                                                    <option value={paciente.id}>{paciente.nome}</option>
-                                                )
-                                            })}
-                                        </select>
+                                        <b>Informações do paciente</b>
                                     </Col>
                                 </Row>
-                                <Row className="text-right mt-2">
+                                <Table>
+                                    <thead style={{ fontWeight: "bold" }}>
+                                        <tr>
+                                            <th scope="col">Nome</th>
+                                            <th scope="col"> Idade</th>
+                                            <th scope="col">Observações </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{nome}</td>
+                                            <td>{resultado}</td>
+                                            <td>Teste de negativo</td>
+                                        </tr>
+                                    </tbody>
+                                </Table>
+                                <Row>
                                     <Col>
-                                        <Button onClick={() => { buscarResultado() }}>Buscar</Button>
+                                        <b>Informações da Rede</b>
                                     </Col>
                                 </Row>
+                                <Table>
+                                    <thead style={{ fontWeight: "bold" }}>
+                                        <tr>
+                                            <th scope="col">Nome</th>
+                                            <th scope="col"> Tempo de resposta</th>
+                                            <th scope="col">Parâmetros </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>breast.h5</td>
+                                            <td>4.3s</td>
+                                            <td>
+                                                <ul style={{listStyle:"none", textAlign:"center"}}>
+                                                    <li>Raio médio  : 0.1 </li>
+                                                    <li>Textura média : 0.1 </li>
+                                                    <li>Perimetro médio : 0.1 </li>
+                                                    <li>Área média : 0.1 </li>
+                                                    <li>Suavidade Média : 0.1 </li>
+                                                    <li>Compacidade Média : 0.1 </li>
+                                                    <li>Concavidade : 0.1 </li>
+                                                    <li>Média dos pontos Côncavos : 0.1 </li>
+                                                    <li>Simetria Média : 0.1 </li>
+                                                    <li>Dimensão Fractal : 0.1 </li>
+                                                    <li>Desvio padrão do raio : 0.1 </li>
+                                                    <li>Desvio padrão da textura : 0.1 </li>
+                                                    <li>Desvio padrão do perímetro : 0.1 </li>
+                                                    <li>Desvio padrão da Área : 0.1 </li>
+                                                    <li>Desvio padrão da Suavidade : 0.1 </li>
+                                                    <li>Desvio padrão dos pontos  : 0.1 </li>
+                                                    <li>Desvio padrão da concavida : 0.1 </li>
+                                                    <li>Média dos pontos côncavos : 0.1 </li>
+                                                    <li>Simetria : 0.1 </li>
+                                                    <li>Dimensão Fractal : 0.1 </li>
+                                                    <li>Menor Raio : 0.1 </li>
+                                                    <li>Menor textura : 0.1 </li>
+                                                    <li>Menor perímetro : 0.1 </li>
+                                                    <li>Menor área : 0.1 </li>
+                                                    <li>Menor suavidade : 0.1 </li>
+                                                    <li>Menor compacidade : 0.1 </li>
+                                                    <li>Menor concavidade  : 0.1 </li>
+                                                    <li>Média dos menores pontos cônvcavos : 0.1 </li>
+                                                    <li>Menor simetria : 0.1 </li>
+                                                    <li>Menor dimensão factral : 0.1 </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </Table>
                             </CardBody>
                         </Card>
                     </Col>
                 </Row>
-                {exibir === true ? RetornarRelatorios() : false}
+                <Row className="mt-5">
+                    <Col>
+                        <Card>
+                            <CardHeader className=" bg-primary text-white">
+                                <b>Resultados</b>
+                            </CardHeader>
+                            <CardBody className="bordered shadow">
+                                <Table className="striped text-center">
+                                    <thead style={{ fontWeight: "bold" }}>
+                                        <tr>
+                                            <th scope="col">Descrição</th>
+                                            <th scope="col">Resultado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{nome}</td>
+                                            <td>{resultado}</td>
+                                        </tr>
+                                    </tbody>
+                                </Table>
+                            </CardBody>
+                        </Card>
+                    </Col>
+                </Row>
+                <Row className="text-rigth">
+                    <Col xs='12' className="mt-2">
+                        <Link to="/prontuario" className="btn btn-primary">Voltar</Link>
+                    </Col>
+                </Row>
             </Container>
         </>
     )

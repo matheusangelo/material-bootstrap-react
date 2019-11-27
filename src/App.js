@@ -18,13 +18,13 @@ class App extends Component {
           <div className="main-container mb-5" style={{ "align": "center" }}>
             <Switch>
               {verificarAcessoPorPerfil() ? true : <h3 className="autorizacao">401 - Não Autorizado</h3>}
-              <Route path="/" exact component={Login} />
-              <Route path="/novo" exact component={CadastroLogin} />
-              <Route path="/master/home" exact component={Home} />
-              <Route path="/master/consulta" exact component={ConsultaPaciente} />
-              <Route path="/master/prontuario" exact component={Prontuario} />
-              <Route path="/master/prontuario/:id" exact component={Prontuario} />
-              <Route path="/master/resultados" exact component={Resultados} />
+              {/* <Route path="/" exact component={Login} /> */}
+              {/* <Route path="/novo" exact component={CadastroLogin} /> */}
+              {/* <Route path="/master/home" exact component={Home} /> */}
+              {/* <Route path="/master/consulta" exact component={ConsultaPaciente} /> */}
+              <Route path="/" exact component={Home} />
+              <Route path="/prontuario" exact component={Prontuario} />
+              <Route path="/resultados/:nome/:resultado" exact component={Resultados} />
               <Route path="*" component={() => <h3 className="autorizacao">404 - Page not found</h3>} />
             </Switch>
           </div>

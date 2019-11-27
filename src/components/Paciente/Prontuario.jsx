@@ -20,6 +20,7 @@ export default function Prontuario(props) {
     const [data_atendimento, setData_atendimento] = useState('');
     const [observacoes, setObservacoes] = useState('');
     const [prontuario, setProntuario] = useState({});
+    const [resultado, setResultado] =useState({});
     const [redirect, setRedirect] = useState(false);
 
     //entradas Rede Neural
@@ -57,30 +58,21 @@ export default function Prontuario(props) {
     const [input30, setInput30] = useState('');
 
 
-
-    useEffect(() => {
-        (async () => {
-            if (id) {
-                await setProntuario(await requisicaoPacientes('GET', id))
-            }
-        })();
-    }, [])
-
     useEffect(() => {
         formatLabels(prontuario);
     }, [prontuario])
 
-    function sendPropsToSave() {
+    async function sendPropsToSave() {
         let propeties = {
             nome: nome,
-            sexo: sexo,
+            // sexo: sexo,
             idade: idade,
-            rg: rg,
-            cpf: cpf,
-            identificador: identificador,
-            data_atendimento: data_atendimento,
+            // rg: rg,
+            // cpf: cpf,
+            // identificador: identificador,
+            // data_atendimento: data_atendimento,
             observacoes: observacoes,
-            prontuario: prontuario,
+            // prontuario: prontuario,
             inputs: {
                 value1: input1,
                 value2: input2,
@@ -115,7 +107,8 @@ export default function Prontuario(props) {
 
             }
         }
-        setRedirect(finalizarCadastro(propeties, id));
+        setResultado(await finalizarCadastro(propeties));
+        setRedirect(true);
     }
 
     function formatLabels(prontuario) {
@@ -170,7 +163,7 @@ export default function Prontuario(props) {
     }
     return (
         <div>
-            {redirect ? <Redirect to="/master/consulta"/> : null}
+            {redirect ? <Redirect to={'/resultados' + '/'+ nome + '/' + resultado}/>: null}
             <NavBarTopo />
             <Container className="mt-2 card">
                 <Row className="mt-1">
@@ -184,7 +177,7 @@ export default function Prontuario(props) {
                     <Col>
                         <Card>
                             <CardHeader className=" bg-primary text-white">
-                                <b>Informações do Paciente</b>
+                                <b>Informações da Rede</b>
                             </CardHeader>
                             <CardBody className="bordered">
                                 <Row className="mt-2">
@@ -215,7 +208,7 @@ export default function Prontuario(props) {
                                         />
                                     </Col>
                                 </Row>
-                                <Row className="mt-8">
+                                {/* <Row className="mt-8">
                                     <Col xs="6">
                                         <MDBInput
                                             value={rg}
@@ -280,7 +273,7 @@ export default function Prontuario(props) {
                                             containerClass="text-left"
                                         />
                                     </Col>
-                                </Row>
+                                </Row> */}
                                 <Row className="mt-4">
                                     <Col xs="12">
                                         <div class="form-group shadow-textarea">
@@ -392,8 +385,7 @@ export default function Prontuario(props) {
                 </Row>
                 <Row className="text-right mt-3">
                     <Col>
-                        <Link to="/master/consulta" color="danger" className="btn btn-danger mb-3">Voltar</Link>
-                        <Button color="primary" className="mb-3" onClick={() => sendPropsToSave()}>Finalizar cadastro</Button>
+                        <Button color="primary" className=" btn btn-primary mb-3" onClick={() => sendPropsToSave()}>Resultados</Button>
                     </Col>
                 </Row>
             </Container>

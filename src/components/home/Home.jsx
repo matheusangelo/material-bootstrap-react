@@ -21,7 +21,7 @@ class Home extends Component {
                     <hr className="my-2" />
                     <p>Trabalho de conclusão de curso - 2019</p>
                     <p className="lead">
-                        <Link to = "/master/consulta" className="btn btn-primary">Iniciar</Link>
+                        <Link to = "/prontuario" className="btn btn-primary">Iniciar</Link>
                     </p>
                 </Jumbotron>
             </div>

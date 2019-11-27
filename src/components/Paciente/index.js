@@ -50,17 +50,17 @@ export function gerenciarSintomas(index, sintoma, intensidade, array = [], adici
     return array
 }
 
-export const finalizarCadastro = async (prontuario, id) => {
-    if (id) {
-        let requisicao = await fetch(URL_PACIENTES + "/"+id, { method: "PUT", mode: 'cors', body:JSON.stringify(prontuario) });
-        let retorno = await requisicao.json();
-        return true
+export const finalizarCadastro = async (prontuario) => {
+    let lista_cancer = []
+    for (const [key,value ] of Object.entries(prontuario.inputs)){
+        lista_cancer.push(value);
     }
-    else {
-        let requisicao = await fetch(URL_PACIENTES + "/",{ method: "POST", mode: 'cors', body: JSON.stringify(prontuario)});
-        let retorno = await requisicao.json();
-        return true
-    }
+
+    prontuario.lista = lista_cancer
+    console.log(prontuario)
+    let requisicao = await fetch(URL_PACIENTES, { method: "POST", mode: 'cors', body: JSON.stringify(prontuario) });
+    let {prediction} = await requisicao.json();
+    return prediction
 }
 
 export let Context = React.createContext({});
