@@ -160,36 +160,36 @@ export default function Resultados(props) {
                                             <td>4.3s</td>
                                             <td>
                                                 <ul style={{ listStyle: "none", textAlign: "center" }}>
-                                                    <li>Raio médio  : {value1} </li>
-                                                    <li>Textura média :{value2}</li>
-                                                    <li>Perimetro médio :{value3}</li>
-                                                    <li>Área média :{value4}</li>
-                                                    <li>Suavidade Média :{value5}</li>
-                                                    <li>Compacidade Média :{value6}</li>
-                                                    <li>Concavidade :{value7}</li>
-                                                    <li>Média dos pontos Côncavos :{value8}</li>
-                                                    <li>Simetria Média :{value9}</li>
-                                                    <li>Dimensão Fractal :{value10}</li>
-                                                    <li>Desvio padrão do raio :{value11}</li>
-                                                    <li>Desvio padrão da textura :{value12}</li>
-                                                    <li>Desvio padrão do perímetro :{value13}</li>
-                                                    <li>Desvio padrão da Área :{value14}</li>
-                                                    <li>Desvio padrão da Suavidade :{value15}</li>
-                                                    <li>Desvio padrão dos pontos  :{value16}</li>
-                                                    <li>Desvio padrão da concavida :{value17}</li>
-                                                    <li>Média dos pontos côncavos :{value18}</li>
-                                                    <li>Simetria :{value19}</li>
-                                                    <li>Dimensão Fractal :{value20}</li>
-                                                    <li>Menor Raio :{value21}</li>
-                                                    <li>Menor textura :{value22}</li>
-                                                    <li>Menor perímetro :{value23}</li>
-                                                    <li>Menor área :{value24}</li>
-                                                    <li>Menor suavidade :{value25}</li>
-                                                    <li>Menor compacidade :{value26}</li>
-                                                    <li>Menor concavidade  :{value27}</li>
-                                                    <li>Média dos menores pontos cônvcavos :{value28}</li>
-                                                    <li>Menor simetria :{value29}</li>
-                                                    <li>Menor dimensão factral :{value30}</li>
+                                                    <li>Raio Médio: {value1} </li>
+                                                    <li>Textura Média: {value2}</li>
+                                                    <li>Perimetro Médio: {value3}</li>
+                                                    <li>Área Média: {value4}</li>
+                                                    <li>Suavidade Média: {value5}</li>
+                                                    <li>Compacidade Média: {value6}</li>
+                                                    <li>Concavidade: {value7}</li>
+                                                    <li>Média dos Pontos Côncavos: {value8}</li>
+                                                    <li>Simetria Média: {value9}</li>
+                                                    <li>Dimensão Fractal: {value10}</li>
+                                                    <li>Desvio Padrão do Raio: {value11}</li>
+                                                    <li>Desvio Padrão da Textura: {value12}</li>
+                                                    <li>Desvio Padrão do Perímetro: {value13}</li>
+                                                    <li>Desvio Padrão da Área: {value14}</li>
+                                                    <li>Desvio Padrão da Suavidade: {value15}</li>
+                                                    <li>Desvio Padrão dos Pontos: {value16}</li>
+                                                    <li>Desvio Padrão da Concavidade: {value17}</li>
+                                                    <li>Média dos Pontos Côncavos: {value18}</li>
+                                                    <li>Simetria: {value19}</li>
+                                                    <li>Dimensão Fractal: {value20}</li>
+                                                    <li>Menor Raio: {value21}</li>
+                                                    <li>Menor Textura: {value22}</li>
+                                                    <li>Menor Perímetro: {value23}</li>
+                                                    <li>Menor Área: {value24}</li>
+                                                    <li>Menor Suavidade: {value25}</li>
+                                                    <li>Menor Compacidade: {value26}</li>
+                                                    <li>Menor Concavidade: {value27}</li>
+                                                    <li>Média dos Menores Pontos Côncavos: {value28}</li>
+                                                    <li>Menor Simetria: {value29}</li>
+                                                    <li>Menor Dimensão Factral: {value30}</li>
                                                 </ul>
                                             </td>
                                         </tr>
