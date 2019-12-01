@@ -20,7 +20,7 @@ export default function Prontuario(props) {
     const [data_atendimento, setData_atendimento] = useState('');
     const [observacoes, setObservacoes] = useState('');
     const [prontuario, setProntuario] = useState({});
-    const [resultado, setResultado] =useState({});
+    const [resultado, setResultado] = useState({});
     const [redirect, setRedirect] = useState(false);
 
     //entradas Rede Neural
@@ -56,7 +56,7 @@ export default function Prontuario(props) {
     const [input28, setInput28] = useState('');
     const [input29, setInput29] = useState('');
     const [input30, setInput30] = useState('');
-
+    const [inputs, setInputs] = useState({});
 
     useEffect(() => {
         formatLabels(prontuario);
@@ -107,6 +107,7 @@ export default function Prontuario(props) {
 
             }
         }
+        setInputs(propeties.inputs);
         setResultado(await finalizarCadastro(propeties));
         setRedirect(true);
     }
@@ -163,7 +164,13 @@ export default function Prontuario(props) {
     }
     return (
         <div>
-            {redirect ? <Redirect to={'/resultados' + '/'+ nome + '/' + resultado}/>: null}
+            {redirect ? <Redirect to={{
+                pathname: '/resultados' + '/' + nome + '/' + resultado + '/' + observacoes + '/'+idade,
+                state: {
+                    inputs: inputs
+                }
+            }} /> : null}
+
             <NavBarTopo />
             <Container className="mt-2 card">
                 <Row className="mt-1">

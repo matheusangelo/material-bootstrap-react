@@ -24,7 +24,7 @@ class App extends Component {
               {/* <Route path="/master/consulta" exact component={ConsultaPaciente} /> */}
               <Route path="/" exact component={Home} />
               <Route path="/prontuario" exact component={Prontuario} />
-              <Route path="/resultados/:nome/:resultado" exact component={Resultados} />
+              <Route path="/resultados/:nome/:resultado/:observacoes/:idade" exact component={Resultados} />
               <Route path="*" component={() => <h3 className="autorizacao">404 - Page not found</h3>} />
             </Switch>
           </div>

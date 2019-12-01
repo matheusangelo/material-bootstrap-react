@@ -6,12 +6,108 @@ import { Link } from 'react-router-dom';
 export default function Resultados(props) {
     const [nome, setNome] = useState('');
     const [resultado, setResultado] = useState('');
+    const[value1, setValue1] =useState('');
+    const[value2, setValue2] =useState('');
+    const[value3, setValue3] =useState('');
+    const[value4, setValue4] =useState('');
+    const[value5, setValue5] =useState('');
+    const[value6, setValue6] =useState('');
+    const[value7, setValue7] =useState('');
+    const[value8, setValue8] =useState('');
+    const[value9, setValue9] =useState('');
+    const[value10, setValue10] =useState('');
+    const[value11, setValue11] =useState('');
+    const[value12, setValue12] =useState('');
+    const[value13, setValue13] =useState('');
+    const[value14, setValue14] =useState('');
+    const[value15, setValue15] =useState('');
+    const[value16, setValue16] =useState('');
+    const[value17, setValue17] =useState('');
+    const[value18, setValue18] =useState('');
+    const[value19, setValue19] =useState('');
+    const[value20, setValue20] =useState('');
+    const[value21, setValue21] =useState('');
+    const[value22, setValue22] =useState('');
+    const[value23, setValue23] =useState('');
+    const[value24, setValue24] =useState('');
+    const[value25, setValue25] =useState('');
+    const[value26, setValue26] =useState('');
+    const[value27, setValue27] =useState('');
+    const[value28, setValue28] =useState('');
+    const[value29, setValue29] =useState('');
+    const[value30, setValue30] =useState('');
+    const [observacoes, setObservacoes] = useState('');
+    const [idade, setIdade] = useState('');
+
 
     useEffect(() => {
-        let { nome } = props.match.params;
-        let { resultado } = props.match.params;
+        let {nome,resultado, observacoes,idade } = props.match.params;
         setNome(nome);
         setResultado(resultado);
+        setObservacoes(observacoes);
+        setIdade(idade);
+
+        let {value1,
+            value2,
+                value3,
+                value4,
+                value5,
+                value6,
+                value7,
+                value8,
+                value9,
+                value10,
+                value11,
+                value12,
+                value13,
+                value14,
+                value15,
+                value16,
+                value17,
+                value18,
+                value19,
+                value20,
+                value21,
+                value22,
+                value23,
+                value24,
+                value25,
+                value26,
+                value27,
+                value28,
+                value29,
+                value30,
+        } = props.location.state.inputs;
+        setValue1(value1)
+        setValue2(value2)
+        setValue3(value3)
+        setValue4(value4)
+        setValue5(value5)
+        setValue6(value6)
+        setValue7(value7)
+        setValue8(value8)
+        setValue9(value9)
+        setValue10(value10)
+        setValue11(value11)
+        setValue12(value12)
+        setValue13(value13)
+        setValue14(value14)
+        setValue15(value15)
+        setValue16(value16)
+        setValue17(value17)
+        setValue18(value18)
+        setValue19(value19)
+        setValue20(value20)
+        setValue21(value21)
+        setValue22(value22)
+        setValue23(value23)
+        setValue24(value24)
+        setValue25(value25)
+        setValue26(value26)
+        setValue27(value27)
+        setValue28(value28)
+        setValue29(value29)
+        setValue30(value30)
     }, [])
     return (
         <>
@@ -40,8 +136,8 @@ export default function Resultados(props) {
                                     <tbody>
                                         <tr>
                                             <td>{nome}</td>
-                                            <td>{resultado}</td>
-                                            <td>Teste de negativo</td>
+                                            <td>{idade}</td>
+                                            <td>{observacoes}</td>
                                         </tr>
                                     </tbody>
                                 </Table>
@@ -63,37 +159,37 @@ export default function Resultados(props) {
                                             <td>breast.h5</td>
                                             <td>4.3s</td>
                                             <td>
-                                                <ul style={{listStyle:"none", textAlign:"center"}}>
-                                                    <li>Raio médio  : 0.1 </li>
-                                                    <li>Textura média : 0.1 </li>
-                                                    <li>Perimetro médio : 0.1 </li>
-                                                    <li>Área média : 0.1 </li>
-                                                    <li>Suavidade Média : 0.1 </li>
-                                                    <li>Compacidade Média : 0.1 </li>
-                                                    <li>Concavidade : 0.1 </li>
-                                                    <li>Média dos pontos Côncavos : 0.1 </li>
-                                                    <li>Simetria Média : 0.1 </li>
-                                                    <li>Dimensão Fractal : 0.1 </li>
-                                                    <li>Desvio padrão do raio : 0.1 </li>
-                                                    <li>Desvio padrão da textura : 0.1 </li>
-                                                    <li>Desvio padrão do perímetro : 0.1 </li>
-                                                    <li>Desvio padrão da Área : 0.1 </li>
-                                                    <li>Desvio padrão da Suavidade : 0.1 </li>
-                                                    <li>Desvio padrão dos pontos  : 0.1 </li>
-                                                    <li>Desvio padrão da concavida : 0.1 </li>
-                                                    <li>Média dos pontos côncavos : 0.1 </li>
-                                                    <li>Simetria : 0.1 </li>
-                                                    <li>Dimensão Fractal : 0.1 </li>
-                                                    <li>Menor Raio : 0.1 </li>
-                                                    <li>Menor textura : 0.1 </li>
-                                                    <li>Menor perímetro : 0.1 </li>
-                                                    <li>Menor área : 0.1 </li>
-                                                    <li>Menor suavidade : 0.1 </li>
-                                                    <li>Menor compacidade : 0.1 </li>
-                                                    <li>Menor concavidade  : 0.1 </li>
-                                                    <li>Média dos menores pontos cônvcavos : 0.1 </li>
-                                                    <li>Menor simetria : 0.1 </li>
-                                                    <li>Menor dimensão factral : 0.1 </li>
+                                                <ul style={{ listStyle: "none", textAlign: "center" }}>
+                                                    <li>Raio médio  : {value1} </li>
+                                                    <li>Textura média :{value2}</li>
+                                                    <li>Perimetro médio :{value3}</li>
+                                                    <li>Área média :{value4}</li>
+                                                    <li>Suavidade Média :{value5}</li>
+                                                    <li>Compacidade Média :{value6}</li>
+                                                    <li>Concavidade :{value7}</li>
+                                                    <li>Média dos pontos Côncavos :{value8}</li>
+                                                    <li>Simetria Média :{value9}</li>
+                                                    <li>Dimensão Fractal :{value10}</li>
+                                                    <li>Desvio padrão do raio :{value11}</li>
+                                                    <li>Desvio padrão da textura :{value12}</li>
+                                                    <li>Desvio padrão do perímetro :{value13}</li>
+                                                    <li>Desvio padrão da Área :{value14}</li>
+                                                    <li>Desvio padrão da Suavidade :{value15}</li>
+                                                    <li>Desvio padrão dos pontos  :{value16}</li>
+                                                    <li>Desvio padrão da concavida :{value17}</li>
+                                                    <li>Média dos pontos côncavos :{value18}</li>
+                                                    <li>Simetria :{value19}</li>
+                                                    <li>Dimensão Fractal :{value20}</li>
+                                                    <li>Menor Raio :{value21}</li>
+                                                    <li>Menor textura :{value22}</li>
+                                                    <li>Menor perímetro :{value23}</li>
+                                                    <li>Menor área :{value24}</li>
+                                                    <li>Menor suavidade :{value25}</li>
+                                                    <li>Menor compacidade :{value26}</li>
+                                                    <li>Menor concavidade  :{value27}</li>
+                                                    <li>Média dos menores pontos cônvcavos :{value28}</li>
+                                                    <li>Menor simetria :{value29}</li>
+                                                    <li>Menor dimensão factral :{value30}</li>
                                                 </ul>
                                             </td>
                                         </tr>
