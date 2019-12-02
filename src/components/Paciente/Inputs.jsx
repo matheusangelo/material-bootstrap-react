@@ -12,7 +12,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput1(e.target.value)}
                 label={"Raio médio"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -24,7 +24,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput2(e.target.value)}
                 label={"Textura média"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -36,7 +36,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput3(e.target.value)}
                 label={"Perimetro médio"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -48,7 +48,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput4(e.target.value)}
                 label={"Área média"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -60,7 +60,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput5(e.target.value)}
                 label={"Suavidade Média"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -72,7 +72,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput6(e.target.value)}
                 label={"Compacidade Média"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -84,7 +84,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput7(e.target.value)}
                 label={"Concavidade"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -96,7 +96,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput8(e.target.value)}
                 label={"Média dos pontos Côncavos"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -108,7 +108,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput9(e.target.value)}
                 label={"Simetria Média"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -120,7 +120,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput10(e.target.value)}
                 label={"Dimensão Fractal"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -132,7 +132,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput11(e.target.value)}
                 label={"Desvio padrão do raio"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -144,7 +144,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput12(e.target.value)}
                 label={"Desvio padrão da textura"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -156,7 +156,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput13(e.target.value)}
                 label={"Desvio padrão do perímetro"}
                 group3
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -168,7 +168,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput14(e.target.value)}
                 label={"Desvio padrão da Área"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -180,7 +180,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput15(e.target.value)}
                 label={"Desvio padrão da Suavidade"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -192,7 +192,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput16(e.target.value)}
                 label={"Desvio padrão dos pontos da compacidade"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -204,7 +204,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput17(e.target.value)}
                 label={"Desvio padrão da concavidade"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -216,7 +216,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput18(e.target.value)}
                 label={"Média dos pontos côncavos"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -228,7 +228,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput19(e.target.value)}
                 label={"Simetria"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -240,7 +240,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput20(e.target.value)}
                 label={"Dimensão Fractal"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -252,7 +252,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput21(e.target.value)}
                 label={"Menor Raio"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -264,7 +264,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput22(e.target.value)}
                 label={"Menor textura"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -276,7 +276,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput23(e.target.value)}
                 label={"Menor perímetro"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -288,7 +288,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput24(e.target.value)}
                 label={"Menor área"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -300,7 +300,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput25(e.target.value)}
                 label={"Menor suavidade"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -312,7 +312,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput26(e.target.value)}
                 label={"Menor compacidade"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -324,7 +324,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput27(e.target.value)}
                 label={"Menor concavidade"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -336,7 +336,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput28(e.target.value)}
                 label={"Média dos menores pontos côncavos"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -348,7 +348,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput29(e.target.value)}
                 label={"Menor simetria"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
@@ -360,7 +360,7 @@ export default function Inputs() {
                 onChange={(e) => context.setInput30(e.target.value)}
                 label={"Menor dimensão factral"}
                 group
-                type="text"
+                type="number"
                 validate
                 error="wrong"
                 success="right"
